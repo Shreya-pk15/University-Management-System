@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Arts & Culture - University Management System{% endblock %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h4><b>Arts & Culture</b></h4>
+    </div>
+    <div class="card-body">
+        <p>Immerse yourself in the vibrant arts and culture scene on our campus. From galleries to theaters, we offer a variety of venues and programs to nurture creativity and celebrate artistic expression.</p>
+
+        <h5><b>Facilities</b></h5>
+        <p>Our arts and culture facilities cover an area of over 150,000 square feet and include:</p>
+        <ul>
+            <li><b>Art Gallery</b>:
+                <ul>
+                    <li>Area: 20,000 sq ft</li>
+                    <li>Features: Exhibition spaces, student showcases, visiting artist displays</li>
+                </ul>
+            </li>
+            <li><b>Performing Arts Theater</b>:
+                <ul>
+                    <li>Area: 30,000 sq ft</li>
+                    <li>Features: Stage, seating for 500, advanced lighting and sound systems</li>
+                </ul>
+            </li>
+            <li><b>Music Hall</b>:
+                <ul>
+                    <li>Area: 25,000 sq ft</li>
+                    <li>Features: Concert stage, practice rooms, recording studio</li>
+                </ul>
+            </li>
+            <li><b>Dance Studio</b>:
+                <ul>
+                    <li>Area: 15,000 sq ft</li>
+                    <li>Features: Sprung floors, mirrors, barre</li>
+                </ul>
+            </li>
+            <li><b>Creative Writing Center</b>:
+                <ul>
+                    <li>Area: 10,000 sq ft</li>
+                    <li>Features: Workshop rooms, literary readings, guest lectures</li>
+                </ul>
+            </li>
+            <li><b>Film and Media Center</b>:
+                <ul>
+                    <li>Area: 25,000 sq ft</li>
+                    <li>Features: Screening room, editing suites, production equipment</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h5><b>Programs and Events</b></h5>
+        <p>We offer a wide range of programs and events to engage the campus community in arts and culture:</p>
+        <ul>
+            <li>Art exhibitions and gallery talks</li>
+            <li>Theater productions and performances</li>
+            <li>Music concerts and recitals</li>
+            <li>Dance performances and workshops</li>
+            <li>Creative writing workshops and readings</li>
+            <li>Film screenings and festivals</li>
+        </ul>
+
+        <h5><b>Gallery</b></h5>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/arts1.jpg') }}" class="img-fluid" alt="Art Gallery">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/arts2.jpg') }}" class="img-fluid" alt="Performing Arts Theater">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/arts3.jpg') }}" class="img-fluid" alt="Music Hall">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/arts4.jpg') }}" class="img-fluid" alt="Dance Studio">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/arts5.jpg') }}" class="img-fluid" alt="Creative Writing Center">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/arts6.jpg') }}" class="img-fluid" alt="Film and Media Center">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

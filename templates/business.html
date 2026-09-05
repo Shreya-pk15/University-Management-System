@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Administration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            /* background-color: #333; */
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+            /* padding: 0.5em 0; */
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        main {
+            margin: 2em auto;
+            width: 90%;
+            max-width: 1000px;
+        }
+        h2, h3 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: square;
+        }
+        .faculty-card {
+            display: flex;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 1.5em;
+            padding: 1em;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .faculty-card img {
+            max-width: 120px;
+            margin-right: 1.5em;
+            border-radius: 8px;
+        }
+        .faculty-card h3 {
+            margin: 0 0 0.5em 0;
+        }
+        .curriculum ul, .career ul {
+            margin: 0 0 1.5em 1.5em;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="University Logo" height="30">
+                <B>ELITE ACADEMY</B>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Campus Life
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ url_for('housing_dining') }}">Housing & Dining</a>
+                            <a class="dropdown-item" href="{{ url_for('health_wellness') }}">Health & Wellness</a>
+                            <a class="dropdown-item" href="{{ url_for('campus_safety') }}">Campus Safety</a>
+                            <a class="dropdown-item" href="{{ url_for('athletics') }}">Athletics</a>
+                            <a class="dropdown-item" href="{{ url_for('arts_culture') }}">Arts & Culture</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('faculty') }}">Faculty</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<header>
+    <h1><b>Business Administration</b></h1>
+</header>
+
+<main>
+    <!-- Description -->
+    <section>
+        <p>The Business Administration program offers a comprehensive education in various aspects of business including finance, marketing, and management. Students will gain a solid foundation in business principles and practices, preparing them for a dynamic and evolving business world.</p>
+    </section>
+
+    <!-- Overview -->
+    <section>
+        <h2>Program Overview</h2>
+        <ul>
+            <li>Learn the fundamental concepts of management and leadership.</li>
+            <li>Gain an understanding of financial statements and accounting principles.</li>
+            <li>Explore the principles and practices of marketing.</li>
+            <li>Study the ethical issues and challenges in business.</li>
+        </ul>
+    </section>
+
+    <!-- Curriculum -->
+    <section class="curriculum">
+        <h2>Curriculum</h2>
+
+        <h3>Core Branches</h3>
+        <ul>
+            <li>Finance</a></li>
+            <li>Marketing</a></li>
+            <li>Human Resources</a></li>
+            <li>Operations Management</a></li>
+            <li>International Business</a></li>
+        </ul>
+
+        <h3>Electives</h3>
+        <ul>
+            <li>Entrepreneurship</a></li>
+            <li>Human Resources Management</a></li>
+        </ul>
+    </section>
+
+    <!-- Faculty -->
+    <section class="faculty">
+        <h2>Faculty</h2>
+        <p>Our distinguished faculty includes renowned professors and researchers, who bring extensive academic and industry experience.</p>
+
+        <!-- Faculty Cards -->
+        <div class="faculty-card">
+            <img src="{{ url_for('static', filename='images/business/john_doe.jpeg') }}" alt="Dr. John Doe">
+            <div>
+                <h3>Dr. John Doe</h3>
+                <p><strong>Subject:</strong> Management and Leadership</p>
+                <p>15 years of experience in management theory and organizational behavior.</p>
+                <p><strong>Phone:</strong> +1-234-567-8901</p>
+            </div>
+        </div>
+
+        <div class="faculty-card">
+            <img src="{{ url_for('static', filename='images/business/juli_k.jpeg') }}" alt="Prof. Julie Smith">
+            <div>
+                <h3>Prof. Julie Smith</h3>
+                <p><strong>Subject:</strong> Marketing Strategy</p>
+                <p>5 years of experience in marketing research and strategy development.</p>
+                <p><strong>Phone:</strong> +1-345-678-9012</p>
+            </div>
+        </div>
+
+        <div class="faculty-card">
+            <img src="{{ url_for('static', filename='images/business/richard_roe.jpeg ') }}" alt="Dr. Richard Roe">
+            <div>
+                <h3>Dr. Richard Roe</h3>
+                <p><strong>Subject:</strong> Operations Management</p>
+                <p>35 years of experience in supply chain management, logistics, and operations research.</p>
+                <p><strong>Phone:</strong> +1-456-789-0123</p>
+                <p><strong>Email:</strong> <a href="mailto:richard.roe@example.com">richard.roe@example.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Prospects -->
+    <section class="career">
+        <h2>Career Prospects</h2>
+        <ul>
+            <li>Business Analysts: Assess and improve business processes.</li>
+            <li>Marketing Managers: Develop and execute strategies to promote products and services.</li>
+            <li>Financial Advisors: Provide expert guidance on managing finances and investments.</li>
+            <li>Human Resources Managers: Oversee employee relations and organizational development.</li>
+            <li>Operations Managers: Ensure the efficient production and delivery of goods and services.</li>
+            <li>Consultants: Offer strategic advice to help businesses grow.</li>
+            <li>Entrepreneurs: Start and manage their own businesses.</li>
+            <li>Sales Managers: Drive sales and manage sales teams.</li>
+            <li>Product Managers and Project Managers: Oversee product development and execution.</li>
+            <li>Management Consultants: Enhance business performance.</li>
+            <li>Account Managers: Handle client relationships.</li>
+            <li>Brand Managers: Build and maintain a company's brand identity.</li>
+        </ul>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Business Administration Program. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

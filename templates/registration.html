@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="University Logo" height="30">
+                <B>ELITE ACADEMY</B>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Campus Life
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ url_for('housing_dining') }}">Housing & Dining</a>
+                            <a class="dropdown-item" href="{{ url_for('health_wellness') }}">Health & Wellness</a>
+                            <a class="dropdown-item" href="{{ url_for('campus_safety') }}">Campus Safety</a>
+                            <a class="dropdown-item" href="{{ url_for('athletics') }}">Athletics</a>
+                            <a class="dropdown-item" href="{{ url_for('arts_culture') }}">Arts & Culture</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('faculty') }}">Faculty</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <h1><b>Student Registration Form</b></h1><br>
+    <form method="POST" action="{{ url_for('registration') }}">
+        <div class="form-group">
+            <label for="name">Name: <span class="required">*</span></label>
+            <input type="text" id="name" name="name" required><br>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email: <span class="required">*</span></label>
+            <input type="email" id="email" name="email" required><br>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone: <span class="required">*</span></label>
+            <input type="text" id="phone" name="phone" required><br>
+        </div>
+        <div class="form-group">
+            <label for="program">Program: <span class="required">*</span></label>
+            <select id="program" name="program" required onchange="loadBranches()">
+                <option value="">Select Program</option>
+                {% for program in programs %}
+                    <option value="{{ program['id'] }}">{{ program['program_name'] }}</option>
+                {% endfor %}
+            </select><br>
+        </div>
+        <div class="form-group">
+            <label for="branch">Branch: <span class="required">*</span></label>
+            <select id="branch" name="branch" required>
+                <option value="">Select Branch</option>
+                <!-- Branch options will be loaded here based on the selected program -->
+            </select><br>
+        </div>   
+        <div class="form-group">
+            <label for="year">Year of Enrollment: <span class="required">*</span></label>
+            <input type="number" id="year" name="year" required><br>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 <b>ELITE ACADEMY</b>. All rights reserved.</p>
+            <p>Contact: <a href="tel:+123456789">+1 (234) 567-89</a> | <a href="mailto:info@example.com">info@example.com</a></p>
+            <p>Follow us:
+                <a href="#" class="text-white mx-1"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="text-white mx-1"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="text-white mx-1"><i class="fa fa-instagram"></i></a>
+            </p>
+        </div>
+    </footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function loadBranches() {
+            var program_id = document.getElementById('program').value;
+            fetch('/get_branches/' + program_id)
+                .then(response => response.json())
+                .then(data => {
+                    var branchSelect = document.getElementById('branch');
+                    branchSelect.innerHTML = '<option value="">Select Branch</option>';
+                    data.forEach(function(branch) {
+                        var option = document.createElement('option');
+                        option.value = branch.id;
+                        option.text = branch.branch_name;
+                        branchSelect.add(option);
+                    });
+                });
+        }
+    </script>
+</body>
+</html>

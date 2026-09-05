@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - University Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block title %}Home - University Management System{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-8">
+        <!-- Announcements Section -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <div class="card-header">
+                    <h5>Latest News</h5>
+                </div>
+            </div>
+            <div class="card-body">
+                <p id="card-text" >
+                   <b>1. Exam Result Announcement:<br></b>
+                    The results for the B.Tech 2nd semester exams are now available. Students can check their results through the student portal.<br>
+                    <b>2. Summer Internship Opportunities:<br></b>
+                    Explore exciting internship opportunities for <u>Cloud Computing and GenAI</u>. Applications are now open; don't miss out on gaining valuable experience.<br>
+                    <b>3. Upcoming Events:<br></b>
+                    Mark your calendars for the Damekedar Celebration of the Tradition of the Country. Join us for <u>Ethnic Day</u> on 18th of July @MainBuilding. Open to all students, faculty, and staff.<br>
+                    <b>4. Campus Updates:<br></b>
+                    Nominations for the upcoming student council elections are now open. Interested candidates are encouraged to apply before the deadline.<br>
+                    <b>5. Scholarship Opportunities:<br></b>
+                    New scholarships available for the 3rd sem students by the TATA group. Applications are now being accepted until July 30th. Apply today!<br></p>
+            </div>
+        </div>
+
+        <!-- Featured Programs Section -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <div class="card-header">
+                    <h5>Programs Offered</h5>
+                </div>
+            </div>
+            <div class="card-body programs">
+                <div class="program">
+                    <img src="{{ url_for('static', filename='images/business.jpeg') }}" alt="Business Administration Image">
+                    <h6 class="card-title"><b>Business Administration</b></h6>
+                    <p id="card-text">Discover our dynamic Business Administration programs, activities to achieve goals and objectives efficiently. Offering specialized tracks in finance, marketing, and entrepreneurship to equip you for leadership roles in the global marketplace.</p>
+                    <a href="{{ url_for('business') }}" class="btn btn-primary">Learn More</a>
+
+                </div>
+                <div class="program">
+                    <img src="{{ url_for('static', filename='images/engineering.jpeg') }}" alt="Engineering Image">
+                    <h6 class="card-title"><b>Engineering</b></h6>
+                    <p id="card-text">Explore our innovative Engineering programs, where hands-on learning meets groundbreaking research in disciplines such as mechanical, electrical, and civil engineering, shaping the future of technology and infrastructure.</p>
+                    <a href="{{ url_for('engineering') }}" class="btn btn-primary">Learn More</a>
+                </div>
+                <div class="program">
+                    <img src="{{ url_for('static', filename='images/health_sciences.jpg') }}" alt="Health Sciences Image">
+                    <h6 class="card-title"><b>Health Sciences</b></h6>
+                    <p id="card-text">Dive into our comprehensive Health Sciences programs, combining theoretical knowledge with practical experience in fields like nursing, public health, and healthcare management to address today's healthcare challenges.</p>
+                    <a href="{{ url_for('healthscience') }}" class="btn btn-primary">Learn More</a>
+                </div>
+                <div class="program">
+                    <img src="{{ url_for('static', filename='images/environmental_studies.jpeg') }}" alt="Environmental Studies Image">
+                    <h6 class="card-title"><b>Environmental Studies</b></h6>
+                    <p id="card-text">Immerse yourself in our Environmental Studies programs, dedicated to sustainability and conservation, with opportunities to engage in fieldwork and research that impact environmental policies and practices worldwide.</p>
+                    <a href="{{ url_for('environmental') }}" class="btn btn-primary">Learn More</a>
+                </div>
+                <div class="program">
+                    <img src="{{ url_for('static', filename='images/fine_arts.jpeg') }}" alt="Fine Arts Image">
+                    <h6 class="card-title"><b>Fine Arts</b></h6>
+                    <p id="card-text">Unleash your creativity with our Fine Arts programs, offering studio-based learning and theoretical exploration in disciplines such as painting, sculpture, and digital arts, fostering artistic expression and innovation.</p>
+                    <a href="{{ url_for('finearts') }}" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <!-- Quick Links Section -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Quick Links</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="{{ url_for('registration') }}">Course Registration</a></li>
+                    <li class="list-group-item"><a href="{{ url_for('calendar') }}">Academic Calendar</a></li>
+                    <li class="list-group-item"><a href="{{ url_for('campus_map') }}">Campus Map</a></li>
+                   
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slideshow Section -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5>Gallery</h5>
+            </div>
+            <div class="card-body">
+                <div class="slideshow">
+                    <div class="mySlides"><img src="{{ url_for('static', filename='image1.jpg') }}" alt="Image 1"></div>
+                    <div class="mySlides"><img src="{{ url_for('static', filename='image2.jpg') }}" alt="Image 2"></div>
+                    <div class="mySlides"><img src="{{ url_for('static', filename='image3.jpeg') }}" alt="Image 3"></div>
+                    <div class="mySlides"><img src="{{ url_for('static', filename='image4.jpg') }}" alt="Image 4"></div>
+                    <div class="mySlides"><img src="{{ url_for('static', filename='image5.jpg') }}" alt="Image 5"></div>
+                    <div class="mySlides"><img src="{{ url_for('static', filename='image6.jpg') }}" alt="Image 6"></div>
+                    <div class="mySlides"><img src="{{ url_for('static', filename='image7.jpg') }}" alt="Image 7"></div>
+                    <div class="mySlides"><img src="{{ url_for('static', filename='image8.jpg') }}" alt="Image 8"></div>
+                    <div class="mySlides"><img src="{{ url_for('static', filename='image9.jpg') }}" alt="Image 9"></div>
+                    <div class="mySlides"><img src="{{ url_for('static', filename='image10.jpg') }}" alt="Image 10"></div>
+                    <div class="mySlides"><img src="{{ url_for('static', filename='image11.jpg') }}" alt="Image 11"></div>
+                    <div class="mySlides"><img src="{{ url_for('static', filename='image12.jpg') }}" alt="Image 12"></div>
+                    <!-- Add more images as needed -->
+                </div>
+            </div>
+        </div>
+        <!-- FAQ Section -->
+<div class="faq-section">
+    <div class="card-header">
+        <h5>FAQs</h5>
+    </div>
+    <br>
+    <div class="faq-container">
+        <div class="faq-questions">
+            <div class="faq">
+                <h3 class="faq-question">What programs does ELITE ACADEMY offer?</h3>
+                <p class="faq-answer">We offer a wide range of undergraduate, graduate, and professional programs across various fields.</p>
+            </div>
+            <div class="faq">
+                <h3 class="faq-question">How can I apply to ELITE ACADEMY?</h3>
+                <p class="faq-answer">You can apply online through our website or contact our admissions office for more details.</p>
+            </div>
+            <div class="faq">
+                <h3 class="faq-question">What are the campus facilities like?</h3>
+                <p class="faq-answer">Our campus boasts state-of-the-art facilities, including modern classrooms, labs, libraries, and recreational areas.</p>
+            </div>
+            <div class="faq">
+                <h3 class="faq-question">What financial aid options are available?</h3>
+                <p class="faq-answer">We offer a variety of scholarships, grants, and loan options to assist students with their financial needs. Please visit our financial aid office for more information.</p>
+            </div>
+            <div class="faq">
+                <h3 class="faq-question">Can I visit the campus before applying?</h3>
+                <p class="faq-answer">Yes, we encourage prospective students to visit our campus. You can schedule a campus tour through our admissions office or join one of our open house events.</p>
+            </div>
+            <div class="faq">
+                <h3 class="faq-question">Are there any internship opportunities available?</h3>
+                <p class="faq-answer">Yes, we have strong partnerships with various industries and organizations, offering numerous internship opportunities for our students to gain real-world experience.</p>
+            </div>
+            <div class="faq">
+                <h3 class="faq-question">What student support services are available?</h3>
+                <p class="faq-answer">We offer a range of student support services including academic advising, career counseling, mental health services, and tutoring to help our students succeed.</p>
+            </div>
+            <div class="faq">
+                <h3 class="faq-question">How can I get involved in student organizations and clubs?</h3>
+                <p class="faq-answer">We have a variety of student organizations and clubs that cater to different interests. You can join these groups during our club fairs or contact the student life office for more details.</p>
+            </div>
+            <div class="faq">
+                <h3 class="faq-question">What housing options are available for students?</h3>
+                <p class="faq-answer">We offer a range of housing options including dormitories, apartments, and off-campus housing. Our housing office can provide you with more information and assist with your housing needs.</p>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (x.length === 0) {
+                console.error("No elements found with class 'mySlides'");
+                return;
+            }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+            }
+            myIndex++;
+            if (myIndex > x.length) {myIndex = 1}    
+            x[myIndex-1].style.display = "block";  
+            setTimeout(carousel, 3000); // Change image every 3 seconds
+        }
+    });
+</script>
+
+<script>
+    const questions = document.querySelectorAll('.faq-question');
+
+    questions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            question.classList.toggle('active');
+        });
+    });
+
+    document.getElementById('next-blog').addEventListener('click', function() {
+        const container = document.querySelector('.blog-container');
+        container.scrollLeft += container.offsetWidth;
+    });
+
+    document.getElementById('prev-blog').addEventListener('click', function() {
+        const container = document.querySelector('.blog-container');
+        container.scrollLeft -= container.offsetWidth;
+    });
+</script>
+
+{% endblock %}
+</body>
+</html>

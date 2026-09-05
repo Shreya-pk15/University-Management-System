@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Athletics - University Management System{% endblock %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h4><b>Athletics</b></h4>
+    </div>
+    <div class="card-body">
+        <p>Stay active and healthy with our extensive athletic facilities, including gyms, sports fields, and fitness classes. Join a team or enjoy recreational sports to balance your academic life.</p>
+        
+        <h5><b>Facilities</b></h5>
+        <p>Our athletic facilities span over 300,000 square feet and include:</p>
+        <ul>
+            <li><b>State-of-the-art Gym</b>:
+                <ul>
+                    <li>Area: 50,000 sq ft</li>
+                    <li>Amenities: Modern equipment, weight rooms, cardio machines</li>
+                </ul>
+            </li>
+            <li><b>Sports Fields</b>:
+                <ul>
+                    <li>Area: 100,000 sq ft</li>
+                    <li>Amenities: Soccer fields, football fields, track fields</li>
+                </ul>
+            </li>
+            <li><b>Indoor Courts</b>:
+                <ul>
+                    <li>Area: 60,000 sq ft</li>
+                    <li>Amenities: Basketball courts, volleyball courts, badminton courts</li>
+                </ul>
+            </li>
+            <li><b>Swimming Pool and Aquatics Center</b>:
+                <ul>
+                    <li>Area: 30,000 sq ft</li>
+                    <li>Amenities: Olympic-sized pool, diving boards, locker rooms</li>
+                </ul>
+            </li>
+            <li><b>Track and Field Facilities</b>:
+                <ul>
+                    <li>Area: 60,000 sq ft</li>
+                    <li>Amenities: Running tracks, field event areas</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h5><b>Programs</b></h5>
+        <p>We offer a variety of programs for athletes of all levels:</p>
+        <ul>
+            <li>Intramural sports leagues</li>
+            <li>Fitness classes, including yoga, pilates, and aerobics</li>
+            <li>Competitive varsity teams</li>
+            <li>Recreational sports clubs</li>
+        </ul>
+
+        <h5><b>Gallery</b></h5>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/athletics1.jpg') }}" class="img-fluid" alt="Gym">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/athletics2.jpg') }}" class="img-fluid" alt="Sports Field">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/athletics3.jpg') }}" class="img-fluid" alt="Basketball Court">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/athletics4.jpg') }}" class="img-fluid" alt="Swimming Pool">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/athletics5.jpg') }}" class="img-fluid" alt="Track and Field">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/athletics6.jpg') }}" class="img-fluid" alt="Yoga Class">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

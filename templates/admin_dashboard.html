@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='images/events') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fac_styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/events.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Vertical alignment of the icon */
+.input-group-append .btn {
+    display: flex;
+    align-items: center;
+    padding: 0; /* Remove default padding */
+    height: calc(1.5em + 0.75rem + 2px); /* Match input field height */
+    border-left: 1px solid #ced4da; /* Border to match with input */
+    background-color: #f8f9fa;
+}
+
+        /* Style for the input group and toggle button */
+.input-group {
+    position: relative;
+}
+
+.input-group .form-control {
+    border-right: none; /* Remove border between input and button */
+}
+
+
+
+.input-group-append .btn:hover {
+    background-color: #e2e6ea; /* Darker background on hover */
+}
+
+/* Icon styling */
+.input-group-append .btn i {
+    font-size: 1.2rem; /* Larger icon */
+    color: #0d0d0e; /* Match with Bootstrap primary color */
+}
+
+/* Button styling in the modal footer */
+.modal-footer .btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+        .event-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: scale(1.03);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-content {
+            padding: 15px;
+        }
+
+        .event-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .event-description {
+            font-size: 0.875rem;
+            color: #555;
+        }
+
+        .event-date-time {
+            font-size: 0.875rem;
+            color: #888;
+        }
+        
+        .card-header {
+            background-color: #333;
+            border-bottom: 1px solid hsl(180, 100%, 99%);
+            color: white;
+        }
+
+        .card-header h3 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        .card-body p {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #fffdfd;
+            color: #000000;
+        }
+
+
+        .course-category {
+            margin-bottom: 30px;
+        }
+
+        .course-category h2 {
+            font-size: 1.7rem;
+            margin-bottom: 20px;
+            color: #302f2f;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .course-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .course-card-header {
+            background-color: #37393b;
+            padding: 15px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fafafa;
+        }
+
+        .course-card-body {
+            padding: 15px;
+            background-color: #fff;
+        }
+
+        .course-description {
+            font-size: 1rem;
+            color: #495057;
+        }
+        .input-group-append .btn {
+            cursor: pointer;
+        }
+        .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .program {
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+
+    .branch {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fff;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .branch h2 {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .branch h2 i {
+        margin-right: 8px;
+        font-size: 20px;
+        color: #333;
+    }
+
+    .years {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .year {
+        flex: 1 1 calc(25% - 20px); /* Four columns layout */
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .year h3 {
+        font-size: 18px;
+        color: #555;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+    }
+
+    .year h3 i {
+        margin-right: 6px;
+        font-size: 18px;
+        color: #555;
+    }
+
+    .subjects ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .subjects ul li {
+        font-size: 14px;
+        color: #666;
+        display: flex;
+        align-items: center;
+        margin-bottom: 4px;
+    }
+
+    .subjects ul li i {
+        margin-right: 8px;
+        font-size: 16px;
+        color: #666;
+    }
+</style>
+</head>
+<body>
+<!-- Navigation Bar -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="University Logo" height="30">
+            <b>ELITE ACADEMY</b>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<marquee>Explore our dynamic programs in Business Administration, Engineering, Health Sciences, Environmental Studies, and Fine Arts!</marquee>
+
+<!-- Main Content -->
+<div>
+    
+<div class="container mt-4">
+    <h1 class="text-center">Admin Dashboard</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Admin Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#manage_students">Manage Student</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#manage_faculty">Manage Faculty</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#course">Courses</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#events">Events</a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">Total Students</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ total_students }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">Total Programs</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ total_programs }}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">Total Branches</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ total_branches }}</h5>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">Total Faculty</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ total_faculty }}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<!--Courses-->
+<div class="container mt-4">
+    <div class="card" id="course">
+        <div class="card-header">
+            <h3><i class="fas fa-book"></i> Courses for each branch</h3>
+        </div>
+        {% for branch_id, years in subjects.items() %}
+        <div class="branch">
+            <h2><i class="fas fa-university"></i><strong>{{ branch_id }}</strong> </h2>
+            <div class="years">
+                {% for year, subject_list in years.items() %}
+                <div class="year">
+                    <h3><i class="fas fa-calendar-alt"></i><strong> Year {{ year }}</strong></h3>
+                    <div class="subjects">
+                        <ul>
+                            {% for subject in subject_list %}
+                            <li><i class="fas fa-book"></i> {{ subject }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" id="manage_students">
+                <div class="card-header">
+                    <h3>Manage Students</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#addStudentModal">Add Student</button>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>SI</th>
+                                <th>Name</th>
+                                <th>Student ID</th>
+                                <th>Date of Birth</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for student in students %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ student[1] }}</td>
+                                <td>{{ student[3] }}</td>
+                                <td>{{ student[4] }}</td>
+                                <td>{{ student[5] }}</td>
+                                <td>{{ student[6] }}</td>
+                                <td>{{ student[7] }}</td>
+                                <td>{{ student[10] }}</td>
+                                <td>
+                                    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editStudentModal"
+                                        data-username="{{  student[1]}}"
+                                        data-student-id="{{  student[3] }}"
+                                        data-dob="{{  student[4] }}"
+                                        data-email="{{  student[5] }}"
+                                        data-phone="{{  student[6] }}"
+                                        data-address="{{  student[7] }}"
+                                        data-year="{{ student[10] }}">
+                                        Edit
+                                    </button>
+                                    <form action="{{ url_for('delete_student', student_id=student[3]) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this student?');">
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>                                    
+                                </td>                                    
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Add Student Modal -->
+    <div class="modal fade" id="addStudentModal" tabindex="-1" role="dialog" aria-labelledby="addStudentModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addStudentModalLabel">Add Student</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ url_for('add_student') }}" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="username">Name: *</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password: <span class="required">*</span></label>
+                            <div class="input-group">
+                                <input type="password" id="password" name="password" class="form-control" required>
+                                <div class="input-group-append">
+                                    <span class="input-group-text togglePassword">
+                                        <i class="fa fa-eye"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>                                                
+                        <div class="form-group">
+                            <label for="student_id">Student ID: *</label>
+                            <input type="text" class="form-control" id="student_id" name="student_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth: *</label>
+                            <input type="date" class="form-control" id="dob" name="dob" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email: *</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone: *</label>
+                            <input type="text" class="form-control" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address: *</label>
+                            <input type="text" class="form-control" id="address" name="address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="student_program">Program</label>
+                            <select id="student_program" name="program" class="form-control">
+                                <option value="" disabled selected>Select Program</option>
+                                <option value="Engineering">Engineering</option>
+                                <option value="Business Administration">Business Administration</option>
+                                <option value="Health Sciences">Health Sciences</option>
+                                <option value="Fine Arts">Fine Arts</option>
+                                <option value="Environmental Studies">Environmental Studies</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="student_branch">Branch</label>
+                            <select id="student_branch" name="branch" class="form-control">
+                                <option value="" disabled selected>Select Branch</option>
+                                <!-- Branch options populated by JS -->
+                            </select>
+                        </div>                                                                        
+                        <div class="form-group">
+                            <label for="year_of_study">Year Of Study: *</label>
+                            <input type="number" class="form-control" id="year_of_study" name="year_of_study" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add Student</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Student Modal -->
+    <div class="modal fade" id="editStudentModal" tabindex="-1" role="dialog" aria-labelledby="editStudentModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editStudentModalLabel">Edit Student</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="editStudentForm" action="{{ url_for('update_student') }}" method="POST">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="edit_username">Name</label>
+                            <input type="text" class="form-control" id="edit_username" name="username" required>
+                        </div>                                             
+                        <div class="form-group">
+                            <label for="edit_student_id">Student ID</label>
+                            <input type="text" class="form-control" id="edit_student_id" name="student_id" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_dob">Date of Birth</label>
+                            <input type="date" class="form-control" id="edit_dob" name="dob" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_email">Email</label>
+                            <input type="email" class="form-control" id="edit_email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_phone">Phone</label>
+                            <input type="text" class="form-control" id="edit_phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_address">Address</label>
+                            <input type="text" class="form-control" id="edit_address" name="address" required>
+                        </div>
+
+                              
+                        <div class="form-group">
+                            <label for="edit_year_of_study">Year Of Study</label>
+                            <input type="number" class="form-control" id="edit_year_of_study" name="year_of_study" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update Student</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<!-- faculty -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" id="manage_faculty">
+                <div class="card-header">
+                    <h3>Manage Faculty Members</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#addFacultyModal">Add Faculty</button>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>SI</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Program</th>
+                                <th>Branch</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for faculty in faculty_members %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ faculty[1] }}</td>
+                                <td>{{ faculty[3] }}</td>
+                                <td>{{ faculty[4] }}</td>
+                                <td>{{ faculty[5] }}</td>
+                                <td>{{ faculty[6] }}</td>
+                                <td>
+                                    <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editFacultyModal"
+                                        data-name="{{ faculty[1] }}"
+                                        data-email="{{ faculty[3] }}"
+                                        data-phone="{{ faculty[4] }}"
+                                        data-program="{{ faculty[5] }}"
+                                        data-branch="{{ faculty[6] }}">
+                                        Edit
+                                    </button>
+                                    <!-- Delete Confirmation -->
+                                    <form action="{{ url_for('delete_faculty', username=faculty[1]) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this faculty?');">
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fa fa-bell"></i> Notification Activity</h3>
+        </div>
+        <div class="card-body">
+            {% if notifications %}
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Faculty</th>
+                                <th>Message</th>
+                                <th>Recipients</th>
+                                <th>Sent At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for notification in notifications %}
+                                <tr>
+                                    <td>{{ notification[0] }}</td>
+                                    <td>{{ notification[1] }}</td>
+                                    <td>{{ notification[3] }}</td>
+                                    <td>{{ notification[2] }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p>No notification activity yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" id="manage_contacts">
+                <div class="card-header">
+                    <h3>Contact Details</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>SI</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for contact in contacts %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ contact[1] }}</td>
+                                <td>{{ contact[2] }}</td>
+                                <td>{{ contact[3] }}</td>
+                                <td>{{ contact[4] }}</td>
+                                <td>{{ contact[5] }}</td>
+                                <td>
+                                    <form action="{{ url_for('delete_contact', name=contact[1]) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this contact?');">
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- events -->
+<div class="container mt-4">
+    <div class="card" id="events">
+        <div class="card-header">
+            <h3><i class="fa fa-calendar-alt profile-icon"></i> Upcoming Events</h3>
+        </div>
+        <div class="row">
+            {% if events %}
+                {% for event in events %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card event-card h-100">
+                            <img src="{{ url_for('static', filename='images/events/' ~ event[4]) }}" alt="{{ event[0] }}" class="card-img-top event-image">
+                            <div class="card-body event-content">
+                                <h5 class="card-title event-title">{{ event[0] }}</h5>
+                                <p class="card-text event-description">{{ event[1] }}</p>
+                                <p class="event-date-time">
+                                    <strong>Date:</strong> {{ event[2] }} <br>
+                                    <strong>Time:</strong> {{ event[3] }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="col-12 text-center">No events available for 2024.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Add Faculty Modal -->
+<div class="modal fade" id="addFacultyModal" tabindex="-1" role="dialog" aria-labelledby="addFacultyModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addFacultyModalLabel">Add Faculty</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ url_for('add_faculty') }}" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="username">Name: *</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password: <span class="required">*</span></label>
+                        <div class="input-group">
+                            <input type="password" id="password" name="password" class="form-control" required>
+                            <div class="input-group-append">
+                                <span class="input-group-text togglePassword">
+                                    <i class="fa fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>                                   
+                    <div class="form-group">
+                        <label for="email">Email: *</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone: *</label>
+                        <input type="text" class="form-control" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="faculty_program">Program</label>
+                        <select id="faculty_program" name="program" class="form-control">
+                            <option value="" disabled selected>Select Program</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Business Administration">Business Administration</option>
+                            <option value="Health Sciences">Health Sciences</option>
+                            <option value="Fine Arts">Fine Arts</option>
+                            <option value="Environmental Studies">Environmental Studies</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="faculty_branch">Branch</label>
+                        <select id="faculty_branch" name="branch" class="form-control">
+                            <option value="" disabled selected>Select Branch</option>
+                            <!-- Branch options populated by JS -->
+                        </select>
+                    </div>                             
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add Faculty</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Edit Faculty Modal -->
+<div class="modal fade" id="editFacultyModal" tabindex="-1" role="dialog" aria-labelledby="editFacultyModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editFacultyModalLabel">Edit Faculty</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="editFacultyForm" action="{{ url_for('update_faculty') }}" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" id="edit_id" name="id">
+                    <div class="form-group">
+                        <label for="edit_username">Name</label>
+                        <input type="text" class="form-control" id="edit_username" name="username" required>
+                    </div>                                    
+                    <div class="form-group">
+                        <label for="edit_email">Email</label>
+                        <input type="email" class="form-control" id="edit_email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_phone">Phone</label>
+                        <input type="text" class="form-control" id="edit_phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_faculty_program">Program</label>
+                        <select id="edit_faculty_program" name="program" class="form-control">
+                            <option value="" disabled selected>Select Program</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Business Administration">Business Administration</option>
+                            <option value="Health Sciences">Health Sciences</option>
+                            <option value="Fine Arts">Fine Arts</option>
+                            <option value="Environmental Studies">Environmental Studies</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_faculty_branch">Branch</label>
+                        <select id="edit_faculty_branch" name="branch" class="form-control">
+                            <option value="" disabled selected>Select Branch</option>
+                            <!-- Branch options populated by JS -->
+                        </select>
+                    </div>                    
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update Faculty</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>  
+</div>
+<br>
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <p>&copy; 2024 <b>ELITE ACADEMY</b>. All rights reserved.</p>
+        <p>Contact: <a href="tel:+123456789">+1 (234) 567-89</a> | <a href="mailto:info@example.com">info@example.com</a></p>
+        <p>Follow us:
+            <a href="#" class="text-white mx-1"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="text-white mx-1"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="text-white mx-1"><i class="fa fa-instagram"></i></a>
+        </p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="path/to/your/script.js"></script>
+
+<script>
+    $(document).ready(function() {
+    // Apply updateBranchOptions to all relevant dropdowns
+
+    // Add Student Modal
+    const addStudentProgram = document.getElementById('student_program');
+    const addStudentBranch = document.getElementById('student_branch');
+
+    if (addStudentProgram) {
+        addStudentProgram.addEventListener('change', function() {
+            updateBranchOptions(addStudentProgram, addStudentBranch);
+        });
+    }
+
+    // Edit Student Modal
+    $('#editStudentModal').on('show.bs.modal', function(event) {
+        const button = $(event.relatedTarget);
+        const modal = $(this);
+        const programElement = modal.find('#edit_student_program')[0];
+        const branchElement = modal.find('#edit_student_branch')[0];
+
+        updateBranchOptions(programElement, branchElement);
+        branchElement.value = button.data('branch');
+    });
+
+    // Add Faculty Modal
+    const addFacultyProgram = document.getElementById('faculty_program');
+    const addFacultyBranch = document.getElementById('faculty_branch');
+
+    if (addFacultyProgram) {
+        addFacultyProgram.addEventListener('change', function() {
+            updateBranchOptions(addFacultyProgram, addFacultyBranch);
+        });
+    }
+
+    // Edit Faculty Modal
+    $('#editFacultyModal').on('show.bs.modal', function(event) {
+        const button = $(event.relatedTarget);
+        const modal = $(this);
+        const programElement = modal.find('#edit_faculty_program')[0];
+        const branchElement = modal.find('#edit_faculty_branch')[0];
+
+        updateBranchOptions(programElement, branchElement);
+        branchElement.value = button.data('branch');
+    });
+
+    // Function to update branch options based on the selected program
+function updateBranchOptions(programElement, branchElement) {
+    const program = programElement.value;
+    branchElement.innerHTML = '<option value="" disabled selected>Select Branch</option>'; // Clear previous options
+
+    let branchOptions = [];
+    if (program === 'Engineering') {
+        branchOptions = ["Mechanical Engineering", "Electrical Engineering", "Civil Engineering", "Computer Science", "Chemical Engineering"];
+    } else if (program === 'Business Administration') {
+        branchOptions = ["Finance", "Marketing", "Human Resources", "Operations Management", "International Business"];
+    } else if (program === "Health Sciences") {
+        branchOptions = ["Nursing", "Pharmacy", "Public Health", "Physiotherapy", "Biomedical Science"];
+    } else if (program === "Fine Arts") {
+        branchOptions = ["Visual Arts", "Performing Arts", "Music", "Dance", "Theatre"];
+    } else if (program === "Environmental Studies") {
+        branchOptions = ["Environmental Science", "Environmental Policy", "Sustainable Development", "Conservation Biology", "Climate Science"];
+    }
+
+    branchOptions.forEach(function(branchOption) {
+        const option = document.createElement('option');
+        option.value = branchOption;
+        option.text = branchOption;
+        branchElement.appendChild(option);
+    });
+}
+
+});
+
+$(document).ready(function () {
+    // Edit Student Modal
+    $('#editStudentModal').on('show.bs.modal', function (event) {
+        const button = $(event.relatedTarget);
+        const username = button.data('username');
+        const studentId = button.data('student-id');
+        const dob = button.data('dob');
+        const email = button.data('email');
+        const phone = button.data('phone');
+        const address = button.data('address');
+        const program = button.data('program');
+        const branch = button.data('branch');
+        const year = button.data('year');
+
+        const modal = $(this);
+        modal.find('#edit_username').val(username);
+        modal.find('#edit_student_id').val(studentId);
+        modal.find('#edit_dob').val(dob);
+        modal.find('#edit_email').val(email);
+        modal.find('#edit_phone').val(phone);
+        modal.find('#edit_address').val(address);
+        modal.find('#edit_program').val(program);
+
+        // Load branches based on the selected program
+        loadBranches(modal.find('#edit_program')[0], modal.find('#edit_branch')[0]);
+
+        // Set the selected branch and year of study
+        modal.find('#edit_branch').val(branch);
+        modal.find('#edit_year_of_study').val(year);
+    });
+
+    
+    // Edit Faculty Modal
+    $('#editFacultyModal').on('show.bs.modal', function (event) {
+        const button = $(event.relatedTarget);
+        const id = button.data('id');
+        const username = button.data('username');
+        const password = button.data('password');
+        const email = button.data('email');
+        const phone = button.data('phone');
+        const program = button.data('program');
+        const branch = button.data('branch');
+
+        const modal = $(this);
+        modal.find('#edit_id').val(id);
+        modal.find('#edit_username').val(username);
+        modal.find('#edit_password').val(password);
+        modal.find('#edit_email').val(email);
+        modal.find('#edit_phone').val(phone);
+        modal.find('#edit_program').val(program);
+
+        // Load branches based on the selected program
+        loadBranches(modal.find('#edit_program')[0], modal.find('#edit_branch')[0]);
+
+        // Set the selected branch
+        modal.find('#edit_branch').val(branch);
+    });
+
+    // Add Faculty Modal - Handle Program and Branch selection
+    const addFacultyProgram = document.getElementById('faculty_program');
+    const addFacultyBranch = document.getElementById('faculty_branch');
+
+    if (addFacultyProgram) {
+        addFacultyProgram.addEventListener('change', function () {
+            loadBranches(addFacultyProgram, addFacultyBranch);
+        });
+    }
+});
+  
+// Function to toggle password visibility
+document.querySelectorAll('.togglePassword').forEach(function (toggleButton) {
+    toggleButton.addEventListener('click', function () {
+        var passwordField = this.closest('.input-group').querySelector('input[type="password"], input[type="text"]');
+        var icon = this.querySelector('i');
+
+        // Toggle the type attribute of the password field
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            passwordField.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    });
+});
+
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

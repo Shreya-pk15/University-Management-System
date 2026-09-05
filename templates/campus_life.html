@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Campus Life - University Management System{% endblock %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h4><b>Campus Life</b></h4>
+    </div>
+    <div class="card-body">
+        <p>Explore the various aspects of campus life:</p>
+        <ul>
+            <li><a href="{{ url_for('housing_dining') }}">Housing & Dining</a></li>
+            <li><a href="{{ url_for('health_wellness') }}">Health & Wellness</a></li>
+            <li><a href="{{ url_for('campus_safety') }}">Campus Safety</a></li>
+            <li><a href="{{ url_for('athletics') }}">Athletics</a></li>
+            <li><a href="{{ url_for('arts_culture') }}">Arts & Culture</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

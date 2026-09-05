@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Campus Safety - University Management System{% endblock %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h4><b>Campus Safety</b></h4>
+    </div>
+    <div class="card-body">
+        <p>Our comprehensive campus safety programs and facilities are designed to ensure the security and well-being of our students, faculty, and staff. We are committed to maintaining a safe and secure environment for everyone on campus.</p>
+        
+        <h5><b>Facilities and Services</b></h5>
+        <p>Our campus safety facilities cover an area of over 50,000 square feet and include:</p>
+        <ul>
+            <li><b>Campus Security Office</b>:
+                <ul>
+                    <li>Area: 15,000 sq ft</li>
+                    <li>Services: 24/7 security patrol, emergency response</li>
+                </ul>
+            </li>
+            <li><b>Emergency Call Stations</b>:
+                <ul>
+                    <li>Area: Distributed across campus</li>
+                    <li>Features: Easily accessible call stations for immediate assistance</li>
+                </ul>
+            </li>
+            <li><b>Surveillance Systems</b>:
+                <ul>
+                    <li>Area: Coverage across key areas on campus</li>
+                    <li>Features: High-definition cameras, monitored 24/7</li>
+                </ul>
+            </li>
+            <li><b>Health and Safety Office</b>:
+                <ul>
+                    <li>Area: 10,000 sq ft</li>
+                    <li>Services: Health inspections, safety audits</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h5><b>Safety Programs</b></h5>
+        <p>We offer a variety of programs to promote safety and security on campus:</p>
+        <ul>
+            <li>Personal safety workshops</li>
+            <li>Self-defense classes</li>
+            <li>Emergency preparedness training</li>
+            <li>Fire safety drills</li>
+            <li>Crime prevention programs</li>
+        </ul>
+
+        <h5><b>Contact Information</b></h5>
+        <p>For any safety concerns or emergencies, please contact:</p>
+        <ul>
+            <li>Campus Security Office: (123) 456-7890</li>
+            <li>Health and Safety Office: (123) 456-7891</li>
+            <li>Emergency Call Stations: Press the call button for immediate assistance</li>
+        </ul>
+
+        <h5><b>Gallery</b></h5>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/safety1.jpg') }}" class="img-fluid" alt="Campus Security Office">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/safety2.jpg') }}" class="img-fluid" alt="Emergency Call Station">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/safety3.jpg') }}" class="img-fluid" alt="Surveillance Camera">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/safety4.jpg') }}" class="img-fluid" alt="Health and Safety Office">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/safety5.jpg') }}" class="img-fluid" alt="Personal Safety Workshop">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/safety6.jpg') }}" class="img-fluid" alt="Self-defense Class">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+
+{% block title %}Faculty - University Management System{% endblock %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h5><b>Faculty</b></h5>
+    </div>
+    <div class="card-body">
+        <p  class="faculty-des">Our esteemed faculty members are the cornerstone of our academic excellence, each bringing a unique blend of scholarly expertise and practical experience to the classroom. They are renowned for their groundbreaking research, innovative teaching methods, and unwavering commitment to student success. Our faculty members are not only educators but also mentors who inspire and guide students to achieve their full potential. With diverse backgrounds and a shared passion for their disciplines, they create a dynamic and engaging learning environment that encourages critical thinking, creativity, and collaboration. Explore the profiles of our distinguished faculty below and learn more about the exceptional individuals who make our programs truly outstanding.</p>
+          
+        <!-- Administration -->
+        <h5><b>University leadership</b></h5>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/dean.jpeg') }}" class="card-img-top" alt="John Smith">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr.John Smith</h5>
+                        <p class="card-text"> Dean of the College of Arts and Sciences with a strong background in educational leadership and policy.<br>
+                        <b>Qualification:</b> Ph.D in Educational Leadership<br>
+                        <b>Areas of Expertise:</b> Educational Policy, Higher Education Administration<br>
+                            <b>Contact:</b> john.smith@university.edu
+                    </div>
+                </div>
+            </div>
+            <!-- Director of Admissions -->
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/director.jpeg') }}" class="card-img-top" alt="Malvika Devi">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr.Malvika Devi</h5>
+                        <p class="card-text">
+                            Director of Admission, leading the university with a vision for academic excellence and innovation.<br>
+                            <b>Qualification:</b> Ph.D in Higher Education Administration<br>
+                            <b>Areas of Expertise:</b> University Management, Strategic Planning<br>
+                            <b>Contact:</b> malvika.devi@university.edu
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Vice Chancellor -->
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/vice.jpeg') }}" class="card-img-top" alt="Robert Jones">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr.Robert Jones</h5>
+                        <p class="card-text">
+                            Vice Chancellor of the University, responsible for student affairs and campus life.<br>
+                            <b>Qualification:</b> Ph.D in Student Affairs Administration<br>
+                            <b>Areas of Expertise:</b> Student Services, Campus Management, Conflict Resolution, Student Advocacy<br>
+                            <b>Contact:</b> robert.jones@university.edu<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- Business Administration -->
+        <h5><b>Business Administration</b></h5>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/business/john_doe.jpeg') }}" class="card-img-top" alt="Dr. Jane Doe">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr.John Doe</h5>
+                            <p class="card-text">Professor of management theory and organizational with over 15 years of experience in the field.<br>
+                            <b>Qualification:</b> Ph.D. in Management and leadership<br>
+                            <b>Subjects Taught:</b> Management and Leadership<br>
+                            <b>Contact:</b> john.doe@university.edu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/business/juli_k.jpeg') }}" class="card-img-top" alt="Dr. John Smith">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr.Julie Smith</h5>
+                            <p class="card-text">Expert in marketing research and strategy with over 5 year of experience.<br>
+                            <b>Qualification:</b> Ph.D. in Marketing and specializes in teaching Marketing Strategy<br>
+                            <b>Subjects Taught:</b>Marketing Strategy, digital marketing<br>
+                            <b>Contact:</b> julie.smith@university.edu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/business/richard_roe.jpeg') }}" class="card-img-top" alt="Dr. Emily White">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr.Richard Roe</h5>
+                            <p class="card-text">Professor in supply chain management, logistics, and operations research with over 35 years of experience.<br>
+                            <b>Qualification:</b> Ph.D in operation management and logistics<br>
+                            <b>Subjects Taught:</b>Operations Management<br>
+                            <b>Contact:</b> richard.roe@university.edu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- Engineering -->
+        <h5><b>Engineering</b></h5>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/engineering/alan_turing.jpeg') }}" class="card-img-top" alt="Dr. Michael Brown">
+                    <div class="card-body">
+                        <h5 class="card-title">Mrs.Alan Turing</h5>
+                            <p class="card-text">Mechanical Engineering professor with system design and development with over 15 years of experiance.<br>
+                            <b>Qualification:</b> Ph.D in Mechanical Engineering<br>
+                            <b>Subjects Taught:</b> Mechanical Engineering<br>
+                            <b>Contact:</b> alan.turing@university.edu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/engineering/grace.jpeg') }}" class="card-img-top" alt="Dr. Susan Green">
+                    <div class="card-body">
+                        <h5 class="card-title">Prof.Grace Hopper</h5>
+                        <p class="card-text">Electrical Engineering specialist in electrical circuit analysis and design with over 15years of experiance.<br>
+                        <b>Qualification:</b> Ph.D in Electrical Engineering<br>
+                        <b>Subjects Taught:</b> Renewable Energy Systems, Electrical Engineering<br>
+                        <b>Contact:</b> grace.hopper@university.edu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/engineering/nikola_tesla.jpeg') }}" class="card-img-top" alt="Dr. Robert Lee">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr. Nikola Tesla</h5>
+                            <p class="card-text">Civil Engineering professor with a focus in structural analysis and construction project management with over 25 tears of experiance.<br>
+                            <b>Qualification:</b> Ph.D in Civil Engineering<br>
+                            <b>Subjects Taught:</b> Sustainable Infrastructure,Civil Engineering<br>
+                            <b>Contact:</b> nikola.tesla@university.edu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- Health Sciences -->
+        <h5><b>Health Sciences</b></h5>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/health_sciences/elizabeth_blackwell.jpeg') }}" class="card-img-top" alt="Dr. Lisa Turner">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr.Shivashankar Ayyar</h5>
+                        <p class="card-text">Medical professor with pioneer in promoting the education in medicine .<br>
+                        <b>Qualification:</b> MD in Medical<br>
+                        <b>Subjects Taught:</b> Medicine<br>
+                        <b>Contact:</b> shivashankar.ayyar@university.edu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/health_sciences/florence_nightingale.jpeg') }}" class="card-img-top" alt="Dr. David Martinez">
+                    <div class="card-body">
+                        <h5 class="card-title">Prof.Florence Nightingale</h5>
+                            <p class="card-text">Nursing professor with extensive clinical experience in critical care and Founder of modern nursing.<br>
+                            <b>Qualification:</b> Ph.D. in Nursing<br>
+                            <b>Subjects Taught:</b> Nursing<br>
+                            <b>Contact:</b> flo.nightinale@university.edu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/health_sciences/joe.jpeg') }}" class="card-img-top" alt="Dr. Rachel Adams">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr.Joe</h5>
+                            <p class="card-text">Developed the first successful polio vaccine, making significant contributions to virology.<br>
+                            <b>Qualification:</b> Ph.D in Virology<br>
+                            <b>Subjects Taught:</b> Virology<br>
+                            <b>Contact:</b> joe@university.edu</p>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- Environmental Studies -->
+        <h5><b>Environmental Studies</b></h5>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/environmental_studies/chandana.jpeg') }}" class="card-img-top" alt="Dr. George Wilson">
+                    <div class="card-body">
+                        <h5 class="card-title">Prof. Chandana Vivhal</h5>
+                            <p class="card-text">Specialist in conservation biology and environmental policy oer 20 years of experiance.<br>
+                            <b>Qualification:</b> Ph.D. in Conservation Biology<br>
+                            <b>Subjects Taught:</b> Conservation Biology, Environmental Policy<br>
+                            <b>Contact:</b> chand.vivhal@university.edu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/environmental_studies/rahul.jpeg') }}" class="card-img-top" alt="Dr. Jennifer Clark">
+                    <div class="card-body">
+                        <h5 class="card-title">Prof. Rahul K</h5>
+                            <p class="card-text">Environmental science professor with a focus on ecosystem restoration over 8 years of experiance.<br>
+                            <b>Qualification:</b> Ph.D. in Environmental Science.<br>
+                            <b>Subjects Taught:</b> Environmental Science.<br>
+                            <b>Contact:</b> rahul.k@university.edu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/environmental_studies/sinch.jpeg') }}" class="card-img-top" alt="Dr. Mark Allen">
+                    <div class="card-body">
+                        <h5 class="card-title">Prof. Sinchana S</h5>
+                        <p class="card-text">Expert in sustainability and climate change mitigation strategies over 9years of experiance.<br>
+                        <b>Qualification:</b> Ph.D. in Environmental Policy.<br>
+                        <b>Subjects Taught:</b> Sustainability,Environmental Policy.<br>
+                        <b>Contact:</b> sinchana.s@university.edu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- Fine Arts -->
+        <h5><b>Fine Arts</b></h5>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/fine_arts/jack.jpeg') }}" class="card-img-top" alt="Dr. Sarah Johnson">
+                    <div class="card-body">
+                        <h5 class="card-title">Prof. Jack</h5>
+                            <p class="card-text">He is expert in photography and visual arts with over 15 years of experience and he has a keen interest in contemporary photography.<br>
+                            <b>Qualification:</b> Ph.D in visul arts.<br>
+                            <b>Subjects Taught:</b> Photography.<br>
+                            <b>Contact:</b> jack@university.edu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/fine_arts/lila.jpeg') }}" class="card-img-top" alt="Dr. Thomas Brown">
+                    <div class="card-body">
+                        <h5 class="card-title">Mrs. Lila Roy</h5>
+                            <p class="card-text">She is an accomplished artist with over 25 years of experience in painting and drawing.<br>
+                            <b>Qualification:</b>  Master's degree in Fine Arts.<br>
+                            <b>Subjects Taught:</b> Painting,Drawing.<br>
+                            <b>Contact:</b> lila.roy@university.edu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='images/fine_arts/vishwa.jpeg') }}" class="card-img-top" alt="Dr. Anna Williams">
+                    <div class="card-body">
+                        <h5 class="card-title">Prof. Viswa Mantan</h5>
+                            <p class="card-text">He is an expert in graphic design with over 10 years of professional and academic experience.<br>
+                            <b>Qualification:</b> Master's degree in Graphic Design.<br>
+                            <b>Subjects Taught:</b> Graphic design<br>
+                            <b>Contact:</b> viswa@university.edu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,413 @@
+/* home.css */
+
+/* Body and Container Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.slideshow img {
+    width: 100%;
+    height: auto; /* Ensure the image scales correctly */
+    display: none; /* Hide all images by default */
+}
+
+.slideshow img:first-child {
+    display: block; /* Show the first image initially */
+}
+
+
+.programs-offered {
+    flex: 3;
+}
+
+.programs-offered {
+    flex: 3;
+}
+
+.container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card img:hover{
+    size: 150%;
+}
+
+.card-header {
+    background-color: #484949;
+    color: #fff;
+    border-radius: 8px 8px 0 0;
+    padding: 10px 20px;
+}
+
+.card-header h4, .card-header h5 {
+    margin-bottom: 0;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-text {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+#card-text {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #484949;;
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #2982e2;
+    border-color: #007bff;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Quick Links Styling */
+.list-group-item {
+    background-color: transparent;
+    border: none;
+    padding: 10px 15px;
+}
+
+.list-group-item a {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.list-group-item a:hover {
+    text-decoration: none;
+    color: #0056b3;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    background-color: #343a40; /* dark background color */
+}
+
+.dropdown-item {
+    color: #ffffff; /* white text color */
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #007bff; /* highlight color on hover/focus */
+    color: #ffffff; /* text color on hover/focus */
+}
+
+/* Programs Grid Layout */
+.programs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.program {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.program img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .programs {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*----program offered---*/
+/* Additional styling for the program detail page */
+.card-header {
+    background-color: #343a40; /* Update if needed */
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 8px 8px 0 0;
+}
+
+.card-body {
+    padding: 20px;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+h2, h4 {
+    color: #c8c0c0;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Faculty Images Styling */
+.faculty-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center items horizontally */
+    gap: 40px; /* Increase gap for better spacing */
+    padding: 20px; /* Add padding around the container */
+}
+
+.faculty-member {
+    text-align: center;
+    flex-basis: 200px; /* Ensure items take up consistent space */
+}
+
+.faculty-member img {
+    width: 150px;
+    height: 150px; /* Set fixed height for uniformity */
+    border-radius: 50%;
+    margin-bottom: 15px; /* Increase margin for better spacing */
+    border: 2px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+    object-fit: cover; /* Ensure images cover the container */
+}
+
+.faculty-member p {
+    font-size: 16px;
+    color: #484949;
+    margin: 5px 0 0 0; /* Adjust margins for better spacing */
+}
+
+/* Faculty Description Styling */
+.faculty-description {
+    font-size: 18px;
+    color: #484949;
+    text-align: center; /* Center the text */
+    margin-top: 20px; /* Add margin to separate from images */
+    padding: 0 20px; /* Add padding for better readability */
+    line-height: 1.6; /* Increase line height for better readability */
+    max-width: 800px; /* Set max width for better layout */
+    margin-left: auto; /* Center the description */
+    margin-right: auto; /* Center the description */
+}
+
+/* Additional Styling for Responsiveness */
+@media (max-width: 600px) {
+    .faculty-member {
+        flex-basis: 100%; /* Take full width on smaller screens */
+    }
+
+    .faculty-member img {
+        width: 100px;
+        height: 100px; /* Reduce size for smaller screens */
+    }
+
+    .faculty-description {
+        font-size: 16px; /* Slightly reduce font size for readability */
+        padding: 0 10px; /* Reduce padding for smaller screens */
+    }
+}
+
+/* FAQ Section */
+.faq-section {
+    text-align: left;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.faq-section h2 {
+    font-family:serif;
+    font-size: 2.5rem;
+    color:rgb(93, 91, 91);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    display:inline-block;
+    padding-bottom: 10px;
+}
+
+
+.faq-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.faq-questions {
+    max-width: 100%;
+    text-align: left;
+}
+
+/*gap btw questions*/
+.faq {
+    margin-bottom: 20px;
+}
+
+.faq-question {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    color:rgb(74, 151, 206);
+    position: relative;
+    padding-left: 25px;
+}
+
+.faq-question::before {
+    content: '\f0a9'; /* FontAwesome icon code */
+    font-family: FontAwesome;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color:#747070;
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+
+/*it changes arrow direction*/
+.faq-question.active::before {
+    content: '\f0a8'; /* FontAwesome icon code for different arrow */
+}
+
+.faq-answer {
+    display: none;
+    margin-top: 10px;
+    padding-left: 25px;
+    font-size: 0.9rem;
+    color: #696262;
+    line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+/* Review Section Styling */
+.review-container {
+    margin-right:-6.5rem;
+     margin-left:-7.6rem;
+     display: flex;
+     align-items: center;
+     gap:50px;
+     overflow: hidden;
+     justify-content: center; /* Center the review boxes */
+     position:relative;
+     margin-bottom: 70px;
+ }
+ 
+ .review-box {
+     margin-left:-55.5px;
+     margin-right: -63.5px;
+     position: relative;
+     background-color: #fff;
+     padding: 8px;
+     border: 1px solid #ddd;
+     border-radius: 5px;
+     box-shadow: 0 0 270px rgba(0, 0, 0, 0.1);
+     transition: all 0.3s ease;
+     cursor: pointer;
+     flex: 0 0 290px;
+     text-align: center;
+     overflow: hidden;
+     white-space: normal;
+     text-overflow: ellipsis;
+ }
+ 
+ .review-box img {
+     width: 150px;
+     height: 150px;
+     border-radius: 50%;
+     object-fit: cover;
+     margin-top:10px;
+     margin-bottom: 10px;
+     border: 2px solid #ddd;
+ }
+ .review-box.active {
+     flex: 0 0 400px;
+     transform: scale(1.2);
+     z-index: 2;
+ }
+ 
+ .review-box.inactive {
+     transform: scale(0.8);
+     opacity: 0.5;
+     z-index: 1;
+ }
+ 
+ .review-rating {
+     display: flex;
+     gap: 2px;
+     justify-content: center;
+ }
+ 
+ .star {
+     display: inline-block;
+     font-size: 20px; /* Adjust size as needed */
+     color: lightgray; /* Default star color */
+     position: relative;
+ }
+ 
+ .star.full::before {
+     content: '\2605'; /* Unicode full star character */
+ }
+ 
+ .star.half::before {
+     content: '\2605'; /* Unicode full star character */
+     color: gold; /* Half-star color */
+ }
+ 
+ .star.half::after {
+     content: '\2605'; /* Unicode full star character */
+     color: lightgray; /* Empty star color */
+     position: absolute;
+     left: 0;
+     top: 0;
+     width: 50%;
+     overflow: hidden;
+ }
+ 
+ .star.empty::before {
+     content: '\2605'; /* Unicode empty star character */
+     color: lightgray; /* Empty star color */
+ }
+ 
+ .review-rating span {
+     color: #ffc107;
+ }
+ 
+ .review-text {
+     white-space:normal; /* Allow text to wrap */
+     overflow: visible; /* Ensure text is visible */
+     margin-bottom: 15px;
+ }
+ 

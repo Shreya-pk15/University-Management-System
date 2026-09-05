@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}University Management System - Student{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='images/events') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .event-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: scale(1.03);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-content {
+            padding: 15px;
+        }
+
+        .event-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .event-description {
+            font-size: 0.875rem;
+            color: #555;
+        }
+
+        .event-date-time {
+            font-size: 0.875rem;
+            color: #888;
+        }
+        
+        .card-header {
+            background-color: #333;
+            border-bottom: 1px solid hsl(180, 100%, 99%);
+            color: white;
+        }
+
+        .card-header h3 {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        .card-body p {
+            font-size: 1rem;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #fffdfd;
+            color: #000000;
+        }
+
+        .course-category {
+            margin-bottom: 30px;
+        }
+
+        .course-category h2 {
+            font-size: 1.7rem;
+            margin-bottom: 20px;
+            color: #302f2f;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .course-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .course-card-header {
+            background-color: #37393b;
+            padding: 15px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fafafa;
+        }
+
+        .course-card-body {
+            padding: 15px;
+            background-color: #fff;
+        }
+
+        .course-title {
+            font-size: 1.125rem;
+            margin-bottom: 10px;
+        }
+
+        .course-description {
+            font-size: 1rem;
+            color: #495057;
+        }
+        /* Custom gradient for the header */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #007bff 0%, #00d4ff 100%);
+}
+
+/* Styling for the card */
+#subjects {
+    border: 1px solid #e3e6f0; /* Light border for subtle separation */
+}
+
+#subjects .card-header {
+    background: #37393b; /* Default color if gradient is not used */
+    border-bottom: 1px solid #e3e6f0; /* Border between header and body */
+    padding: 1rem; /* Adjust padding */
+}
+
+#subjects .list-group-item {
+    padding: 1rem 1.5rem; /* More padding for list items */
+    border-radius: 0.5rem; /* Rounded corners for list items */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+#subjects .list-group-item:hover {
+    background-color: #f1f3f6; /* Light gray background on hover */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+#subjects .list-group-item i {
+    font-size: 1.2rem; /* Larger icon size */
+}
+
+.classroom-stream {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.stream-intro {
+    color: #59636e;
+    margin: 0 0 20px;
+    font-size: 0.95rem;
+}
+
+.announcement-card {
+    border: 1px solid #d9e0e7;
+    border-left: 4px solid #285f8f;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(31, 45, 61, 0.08);
+    margin-bottom: 14px;
+    overflow: hidden;
+}
+
+.announcement-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #edf0f4;
+    color: #697480;
+    font-size: 0.84rem;
+}
+
+.announcement-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    background: #285f8f;
+    color: #fff;
+}
+
+.announcement-message {
+    padding: 16px;
+    color: #27313a;
+    line-height: 1.55;
+    white-space: pre-line;
+}
+
+.announcement-reply {
+    display: none;
+}
+
+.reply-history {
+    padding: 12px 0;
+}
+
+.reply-history p {
+    margin: 0;
+    padding: 12px 14px;
+    border-left: 3px solid #6b879e;
+    background: #f5f7f9;
+    color: #3f4a54;
+}
+
+        .classroom-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin: 24px 0;
+            padding: 28px 32px;
+            border-radius: 10px;
+            color: #fff;
+            background: linear-gradient(135deg, #1769aa, #2b8ac6);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        .classroom-eyebrow {
+            display: block;
+            margin-bottom: 6px;
+            color: #d9efff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .classroom-banner h2 {
+            margin: 0;
+            font-size: 1.65rem;
+            font-weight: 700;
+        }
+
+        .classroom-banner p {
+            margin: 6px 0 0;
+            color: #e8f5ff;
+        }
+
+        .classroom-stat {
+            display: grid;
+            min-width: 110px;
+            padding: 12px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.12);
+            text-align: center;
+        }
+
+        .classroom-stat i {
+            margin-bottom: 4px;
+            font-size: 1.1rem;
+        }
+
+        .classroom-stat strong {
+            font-size: 1.5rem;
+        }
+
+        .classroom-stat span {
+            font-size: 0.78rem;
+        }
+
+        @media (max-width: 576px) {
+            .classroom-banner {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 22px;
+            }
+
+            .classroom-banner h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var studentId = document.getElementById('student_id').value;
+            if (!/^\d{3}$/.test(studentId)) {
+                alert('Student ID must be exactly 3 digits.');
+                return false;
+            }
+            var phone = document.getElementById('phone').value;
+            if (!/^\d{10}$/.test(phone)) {
+                alert('Phone number must contain exactly 10 digits.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="University Logo" height="30">
+            <b>ELITE ACADEMY</b>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<marquee>Explore our dynamic programs in Business Administration, Engineering, Health Sciences, Environmental Studies, and Fine Arts!</marquee>
+
+<!-- Main Content -->
+<div class="container mt-4">
+    <h1 class="text-center">Student Dashboard</h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Student Dashboard</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#Parent INFO">Parent INFO</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#Academic Records">Academic Records</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#Attendance">Attendance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#events">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- <section class="classroom-banner student-classroom-banner">
+        <div>
+            <span class="classroom-eyebrow">My classroom</span>
+            <h2>{{ program_name }} · {{ branch_name }}</h2>
+            <p>Year {{ student['year_of_study'] }} learning space</p>
+        </div>
+        <div class="classroom-stat">
+            <i class="fa fa-book"></i>
+            <strong>{{ subjects|length }}</strong>
+            <span>Subjects</span>
+        </div>
+    </section> -->
+
+    <div class="card" id="profile">
+        <div class="card-header">
+            <h3><i class="fa fa-user profile-icon"></i> Profile</h3>
+        </div>
+        <div class="card-body">
+            <table>
+                <tr>
+                    <th>Detail</th>
+                    <th>Information</th>
+                </tr>
+                <tr>
+                    <td><i class="fa fa-user profile-icon"></i><strong> Name</strong> </td>
+                    <td>{{ student['username'] }}</td>
+                </tr>
+                <tr>
+                    <td><i class="fa fa-id-badge profile-icon"></i> <strong> Student ID</strong></td>
+                    <td>{{ student['student_id'] }}</td>
+                </tr>
+                <tr>
+                    <td><i class="fa fa-calendar profile-icon"></i><strong> Date of Birth</strong></td>
+                    <td>{{ student['dob'] }}</td>
+                </tr>
+                <tr>
+                    <td><i class="fa fa-envelope profile-icon"></i><strong> Email</strong> </td>
+                    <td>{{ student['email'] }}</td>
+                </tr>
+                <tr>
+                    <td><i class="fa fa-phone profile-icon"></i><strong> Phone</strong> </td>
+                    <td>{{ student['phone'] }}</td>
+                </tr>
+                <tr>
+                    <td><i class="fa fa-home profile-icon"></i><strong> Address</strong> </td>
+                    <td>{{ student['address'] }}</td>
+                </tr>
+                <tr>
+                    <td><i class="fa fa-book profile-icon"></i><strong> Program</strong> </td>
+                    <td>{{ program_name }}</td>
+                </tr>
+                <tr>
+                    <td><i class="fa fa-code-branch profile-icon"></i><strong> Branch</strong> </td>
+                    <td>{{ branch_name }}</td>
+                </tr>
+                <tr>
+                    <td><i class="fa fa-calendar-check profile-icon"></i> <strong> year of study</strong> </td>
+                    <td>{{ student['year_of_study'] }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+        <!-- Display parent information -->
+        <div class="card" id="parents_info">
+            <div class="card-header">
+                <h3><i class="fa fa-users profile-icon"></i> Parent Information</h3>
+            </div>
+            <div class="card-body">
+                <table>
+                    <tr>
+                        <th>Detail</th>
+                        <th>Information</th>
+                    </tr>
+                    {% for parent in parents %}
+                    <tr>
+                        <td><i class="fa fa-user profile-icon"></i><strong> Parent Type</strong> </td>
+                        <td>{{ parent[7] }}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-user profile-icon"></i><strong> Username</strong> </td>
+                        <td>{{ parent[1] }}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-envelope profile-icon"></i><strong> Email</strong> </td>
+                        <td>{{ parent[3] }}</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fa fa-phone profile-icon"></i><strong> Phone</strong> </td>
+                        <td>{{ parent[4] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>    
+    <!-- <div class="card" id="academic_records">
+        <div class="card-header">
+            <h3><i class="fa fa-book profile-icon"></i> Academic Records</h3>
+        </div>
+        <div class="card-body">
+            <p>Your academic records will be displayed here.</p>
+        </div>
+    </div> -->
+
+<!-- Notifications -->
+<div class="card" id="notifications">
+    <div class="card-header">
+        <h3><i class="fa fa-bell profile-icon"></i>Announcements</h3>
+    </div>
+    <div class="card-body classroom-stream">
+        <p class="stream-intro">Announcements and messages from your faculty.</p>
+        {% if notifications %}
+            {% for notification in notifications %}
+                <article class="announcement-card">
+                    <div class="announcement-meta">
+                        <span class="announcement-avatar"><i class="fa fa-user"></i></span>
+                        <strong>{{ notification[0] }}</strong>
+                        <span>posted an announcement</span>
+                        <small class="ml-auto">{{ notification[2] }}</small>
+                    </div>
+                    <div class="announcement-message">{{ notification[1] }}</div>
+                </article>
+            {% endfor %}
+        {% else %}
+            <p class="text-center">No announcements at the moment.</p>
+        {% endif %}
+    </div>
+</div>
+
+<br>
+<div class="card shadow-lg rounded-lg" id="subjects">
+    <div class="card-header bg-gradient-primary text-white border-0 rounded-top">
+        <h4 class="mb-0">
+            <i class="fa fa-book profile-icon"></i> Subjects for Year {{ student['year_of_study'] }}
+        </h4>
+    </div>
+    <div class="card-body p-4">
+        <ul class="list-group list-group-flush">
+            {% for subject in subjects %}
+                <li class="list-group-item d-flex align-items-center border-0">
+                    <i class="fa fa-check-circle text-success mr-3"></i>
+                    <span>{{ subject[0] }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<br>
+
+    <div class="card" id="events">
+        <div class="card-header">
+            <h3><i class="fa fa-calendar-alt profile-icon"></i>Upcoming Events</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                {% if events %}
+                    {% for event in events %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card event-card h-100">
+                                <img src="{{ url_for('static', filename='images/events/' ~ event[4]) }}" alt="{{ event[0] }}" class="card-img-top event-image">
+                                <div class="card-body event-content">
+                                    <h5 class="card-title event-title">{{ event[0] }}</h5>
+                                    <p class="card-text event-description">{{ event[1] }}</p>
+                                    <p class="event-date-time">
+                                        <strong>Date:</strong> {{ event[2] }} <br>
+                                        <strong>Time:</strong> {{ event[3] }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="col-12 text-center">No events available for 2024.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>    
+</div>
+</div>
+<!-- Footer Section -->
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <p>&copy; 2024 <b>ELITE ACADEMY</b>. All rights reserved.</p>
+        <p>Contact: <a href="tel:+123456789">+1 (234) 567-89</a> | <a href="mailto:info@example.com">info@example.com</a></p>
+        <p>Follow us:
+            <a href="#" class="text-white mx-1"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="text-white mx-1"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="text-white mx-1"><i class="fa fa-instagram"></i></a>
+        </p>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.querySelectorAll('.togglePassword').forEach(function (toggleButton) {
+    toggleButton.addEventListener('click', function () {
+        var passwordField = this.closest('.input-group').querySelector('input[type="password"], input[type="text"]');
+        var icon = this.querySelector('i');
+
+        // Toggle the type attribute of the password field
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            passwordField.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    });
+});
+</script>
+
+</body>
+</html>

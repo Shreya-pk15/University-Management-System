@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Housing & Dining - University Management System{% endblock %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h4><b>Housing & Dining</b></h4>
+    </div>
+    <div class="card-body">
+        <p>Experience comfortable and convenient living on campus with our diverse housing options and dining facilities, offering a variety of cuisines to cater to different tastes and dietary needs.</p>
+
+        <h5><b>Housing Options</b></h5>
+        <p>We offer a range of housing options to meet the needs of our diverse student body. Our housing facilities cover a total area of over 500,000 square feet, providing ample space and comfort for all residents:</p>
+        <ul>
+            <li><b>Traditional Dormitories</b>:
+                <ul>
+                    <li>Capacity: 2000 students</li>
+                    <li>Area: 150,000 sq ft</li>
+                    <li>Amenities: Shared bathrooms, common rooms, study areas</li>
+                </ul>
+            </li>
+            <li><b>Suite-style Living</b>:
+                <ul>
+                    <li>Capacity: 1000 students</li>
+                    <li>Area: 120,000 sq ft</li>
+                    <li>Amenities: Private bathrooms, living areas, kitchenettes</li>
+                </ul>
+            </li>
+            <li><b>Apartment-style Housing</b>:
+                <ul>
+                    <li>Capacity: 800 students</li>
+                    <li>Area: 100,000 sq ft</li>
+                    <li>Amenities: Full kitchens, private bedrooms, living rooms</li>
+                </ul>
+            </li>
+            <li><b>Graduate Student Housing</b>:
+                <ul>
+                    <li>Capacity: 500 students</li>
+                    <li>Area: 80,000 sq ft</li>
+                    <li>Amenities: Single occupancy rooms, study areas, lounges</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h5><b>Dining Facilities</b></h5>
+        <p>Enjoy delicious meals at our various dining facilities, which together cover an area of 200,000 square feet and include:</p>
+        <ul>
+            <li><b>Central Dining Hall</b>:
+                <ul>
+                    <li>Capacity: 1000 seats</li>
+                    <li>Area: 50,000 sq ft</li>
+                    <li>Features: Multiple food stations, salad bars, dessert counters</li>
+                </ul>
+            </li>
+            <li><b>Campus Cafeterias</b>:
+                <ul>
+                    <li>Capacity: 600 seats (combined)</li>
+                    <li>Area: 30,000 sq ft</li>
+                    <li>Features: Quick meals, coffee, snacks</li>
+                </ul>
+            </li>
+            <li><b>Food Courts</b>:
+                <ul>
+                    <li>Capacity: 800 seats (combined)</li>
+                    <li>Area: 40,000 sq ft</li>
+                    <li>Features: Variety of food vendors, including fast food and healthy options</li>
+                </ul>
+            </li>
+            <li><b>Specialty Restaurants</b>:
+                <ul>
+                    <li>Capacity: 200 seats (combined)</li>
+                    <li>Area: 30,000 sq ft</li>
+                    <li>Features: Themed dining experiences, international cuisine</li>
+                </ul>
+            </li>
+            <li><b>Coffee Shops</b>:
+                <ul>
+                    <li>Capacity: 200 seats (combined)</li>
+                    <li>Area: 20,000 sq ft</li>
+                    <li>Features: Specialty coffees, teas, pastries</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h5><b>Gallery</b></h5>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/housing1.jpg') }}" class="img-fluid" alt="Dormitory">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/housing2.jpg') }}" class="img-fluid" alt="Suite">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/housing3.jpg') }}" class="img-fluid" alt="Apartment">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/dining1.jpg') }}" class="img-fluid" alt="Dining Hall">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/dining2.jpg') }}" class="img-fluid" alt="Cafeteria">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/dining3.jpg') }}" class="img-fluid" alt="Food Court">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

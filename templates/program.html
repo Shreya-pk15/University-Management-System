@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}{{ program.title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>{{ program.title }}</h2>
+        </div>
+        <div class="card-body">
+            <p>{{ program.description }}</p>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>Overview</h4>
+        </div>
+        <div class="card-body">
+            {% for item in program.overview %}
+            <p>{{ item }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>Curriculum</h4>
+        </div>
+        <div class="card-body">
+            <h5>Core Branches</h5>
+            <ul class="list-unstyled">
+                {% for course in program.curriculum['Core Branches'] %}
+                <li>
+                    <a href="{{ course.url }}" target="_blank">{{ course.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <h5>Electives</h5>
+            <ul class="list-unstyled">
+                {% for elective in program.curriculum['Electives'] %}
+                <li>
+                    <a href="{{ elective.url }}" target="_blank">{{ elective.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>Faculty</h4>
+        </div>
+        <div class="card-body">
+            <div class="faculty-container">
+                {% for member in program.faculty %}
+                <div class="faculty-member {% if loop.index is odd %}faculty-member-left{% else %}faculty-member-right{% endif %}">
+                    <img src="{{ url_for('static', filename='images/' ~ member.image) }}" alt="{{ member.name }}" class="faculty-photo">
+                    <div class="faculty-info">
+                        <p><strong>{{ member.name }}</strong></p>
+                        {% if member.phone %}
+                        <p>Phone: {{ member.phone }}</p>
+                        {% endif %}
+                        {% if member.subject %}
+                        <p>Subject: {{ member.subject }}</p>
+                        {% endif %}
+                        {% if member.experience %}
+                        <p>Experience: {{ member.experience }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <p class="faculty-description">
+                {{ program.faculty_description }}
+            </p>
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>Career Prospects</h4>
+        </div>
+        <div class="card-body">
+            <ul class="career-list">
+                {% for career in program.career_prospects %}
+                <li class="career-item">
+                    <p>{{ career }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+    
+

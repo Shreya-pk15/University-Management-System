@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Signup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="University Logo" height="30">
+                <b>ELITE ACADEMY</b>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Campus Life
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ url_for('housing_dining') }}">Housing & Dining</a>
+                            <a class="dropdown-item" href="{{ url_for('health_wellness') }}">Health & Wellness</a>
+                            <a class="dropdown-item" href="{{ url_for('campus_safety') }}">Campus Safety</a>
+                            <a class="dropdown-item" href="{{ url_for('athletics') }}">Athletics</a>
+                            <a class="dropdown-item" href="{{ url_for('arts_culture') }}">Arts & Culture</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('faculty') }}">Faculty</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <h2>Faculty Signup</h2>
+        <form method="POST" action="{{ url_for('faculty_signup') }}" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="username">Username: <span class="required">*</span></label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password: <span class="required">*</span></label>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" class="form-control" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="togglePassword">
+                            <i class="fa fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+            </div> 
+            <div class="form-group">
+                <label for="email">Email: <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number: <span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" required pattern="\d{10}" title="Phone number must contain exactly 10 digits">
+            </div>
+            <div class="form-group">
+                <label for="program">Program: <span class="required">*</span></label>
+                <select id="program" name="program" required onchange="loadBranches()">
+                    <option value="">Select Program</option>
+                    {% for program in programs %}
+                        <option value="{{ program[0] }}">{{ program[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="branch">Branch: <span class="required">*</span></label>
+                <select id="branch" name="branch" required onchange="loadSubjects()">
+                    <option value="">Select Branch</option>
+                </select>
+            </div>  
+            <div class="form-group">
+                <label for="teaching_year">Teaching Year: <span class="required">*</span></label>
+                <select id="teaching_year" name="teaching_year" required onchange="loadSubjects()">
+                    <option value="">Select Year</option>
+                    <option value="1">1st Year</option>
+                    <option value="2">2nd Year</option>
+                    <option value="3">3rd Year</option>
+                    <option value="4">4th Year</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="subject_id">Subject: <span class="required">*</span></label>
+                <select id="subject_id" name="subject_id" required>
+                    <option value="">Select Subject</option>
+                </select>
+                <small>Each faculty member is assigned one subject for the selected year.</small>
+            </div>
+            <button type="submit" class="btn">Signup</button>
+        </form>
+    </div>
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 <b>ELITE ACADEMY</b>. All rights reserved.</p>
+            <p>Contact: <a href="tel:+123456789">+1 (234) 567-89</a> | <a href="mailto:info@example.com">info@example.com</a></p>
+            <p>Follow us:
+                <a href="#" class="text-white mx-1"><i class="fa fa-facebook"></i></a>
+                <a href="#" class="text-white mx-1"><i class="fa fa-twitter"></i></a>
+                <a href="#" class="text-white mx-1"><i class="fa fa-instagram"></i></a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+// Function to validate the form
+function validateForm() {
+    var phone = document.getElementById('phone').value;
+    if (!/^\d{10}$/.test(phone)) {
+        alert('Phone number must contain exactly 10 digits.');
+        return false;
+    }
+    return true;
+}
+
+// Function to load branches based on the selected program
+function loadBranches() {
+            var program_id = document.getElementById('program').value;
+            var branchSelect = document.getElementById('branch');
+            branchSelect.innerHTML = '<option value="">Select Branch</option>';
+
+            if (!program_id) {
+                return;
+            }
+
+            fetch('/get_branches/' + program_id)
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(function(branch) {
+                        var option = document.createElement('option');
+                        option.value = branch.id;
+                        option.text = branch.branch_name;
+                        branchSelect.add(option);
+                    });
+                });
+        }
+
+function loadSubjects() {
+    var branchId = document.getElementById('branch').value;
+    var year = document.getElementById('teaching_year').value;
+    var subjectSelect = document.getElementById('subject_id');
+    subjectSelect.innerHTML = '<option value="">Select Subject</option>';
+
+    if (!branchId || !year) {
+        return;
+    }
+
+    fetch('/get_subjects/' + branchId + '/' + year)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(function(subject) {
+                var option = document.createElement('option');
+                option.value = subject.id;
+                option.text = subject.subject_name;
+                subjectSelect.add(option);
+            });
+        });
+}
+
+// Function to toggle password visibility
+var togglePasswordButton = document.getElementById('togglePassword');
+if (togglePasswordButton) {
+    togglePasswordButton.addEventListener('click', function () {
+        var passwordField = document.getElementById('password');
+        var icon = this.querySelector('i');
+
+        // Toggle the type attribute of the password field
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            passwordField.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    });
+}   
+</script>   
+</body>
+</html>

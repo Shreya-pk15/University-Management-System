@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Health & Wellness - University Management System{% endblock %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h4><b>Health & Wellness</b></h4>
+    </div>
+    <div class="card-body">
+        <p>Our comprehensive Health & Wellness facilities are designed to support the physical and mental well-being of our students. We offer a range of services to help you maintain a healthy lifestyle and cope with the demands of academic life.</p>
+
+        <h5><b>Facilities</b></h5>
+        <p>Our health and wellness facilities cover an area of over 100,000 square feet and include:</p>
+        <ul>
+            <li><b>Student Health Center</b>:
+                <ul>
+                    <li>Area: 30,000 sq ft</li>
+                    <li>Services: Medical consultations, immunizations, lab services</li>
+                </ul>
+            </li>
+            <li><b>Counseling and Psychological Services</b>:
+                <ul>
+                    <li>Area: 20,000 sq ft</li>
+                    <li>Services: Individual counseling, group therapy, crisis intervention</li>
+                </ul>
+            </li>
+            <li><b>Wellness Center</b>:
+                <ul>
+                    <li>Area: 25,000 sq ft</li>
+                    <li>Services: Fitness classes, stress management workshops, nutrition counseling</li>
+                </ul>
+            </li>
+            <li><b>Recreation Center</b>:
+                <ul>
+                    <li>Area: 25,000 sq ft</li>
+                    <li>Amenities: Indoor track, swimming pool, fitness equipment</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h5><b>Programs and Services</b></h5>
+        <p>We offer a variety of programs and services to promote health and wellness on campus:</p>
+        <ul>
+            <li>Health education workshops</li>
+            <li>Mental health awareness campaigns</li>
+            <li>Peer support groups</li>
+            <li>Fitness and wellness programs</li>
+            <li>Stress reduction and mindfulness sessions</li>
+        </ul>
+
+        <h5><b>Gallery</b></h5>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/health1.jpg') }}" class="img-fluid" alt="Health Center">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/health2.png') }}" class="img-fluid" alt="Counseling Services">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/health3.jpg') }}" class="img-fluid" alt="Wellness Center">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/health4.jpg') }}" class="img-fluid" alt="Recreation Center">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/health5.jpg') }}" class="img-fluid" alt="Fitness Class">
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{{ url_for('static', filename='images/health6.jpg') }}" class="img-fluid" alt="Mental Health Workshop">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

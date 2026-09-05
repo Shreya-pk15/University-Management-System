@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}University Management System{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+    <!-- Include Bootstrap CSS and any other necessary CSS files -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fac_styles.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+    
+</head>
+<body>
+
+<!-- Navigation Bar -->
+ 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="University Logo" height="30">
+            <B>ELITE ACADEMY</B>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('faculty') }}">Faculty</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="/campus-map">Campus Map</a>
+                </li> -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Campus Life
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url_for('housing_dining') }}">Housing & Dining</a>
+                        <a class="dropdown-item" href="{{ url_for('health_wellness') }}">Health & Wellness</a>
+                        <a class="dropdown-item" href="{{ url_for('campus_safety') }}">Campus Safety</a>
+                        <a class="dropdown-item" href="{{ url_for('athletics') }}">Athletics</a>
+                        <a class="dropdown-item" href="{{ url_for('arts_culture') }}">Arts & Culture</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Login
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
+                        <a class="dropdown-item" href="{{ url_for('parent_login') }}">Parent Login</a>
+                        <a class="dropdown-item" href="{{ url_for('student_login') }}">Student Login</a>
+                        <a class="dropdown-item" href="{{ url_for('faculty_login') }}">Faculty Login</a>
+                        <a class="dropdown-item" href="{{ url_for('admin_login') }}">Admin Login</a>
+                    </div>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<marquee>Explore our dynamic programs in Business Administration, Engineering, Health Sciences, Environmental Studies, and Fine Arts!</marquee>
+<!-- Main Content -->
+<div class="container mt-4">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Footer Section -->
+
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        <p>&copy; 2024 <b>ELITE ACADEMY</b>. All rights reserved.</p>
+        <p>Contact: <a href="tel:+123456789">+1 (234) 567-89</a> | <a href="mailto:info@example.com">info@example.com</a></p>
+        <p>Follow us:
+            <a href="#" class="text-white mx-1"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="text-white mx-1"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="text-white mx-1"><i class="fa fa-instagram"></i></a>
+        </p>
+    </div>
+</footer>
+
+<!-- Contact Us Button -->
+<button class="contact-us-button" onclick="document.getElementById('contactModal').style.display='block'">
+    Need Any Help?<br>Contact Us
+</button>
+
+<!-- Contact Us Modal -->
+<div id="contactModal" class="contact-modal">
+    <div class="contact-modal-content">
+        <span class="close" onclick="document.getElementById('contactModal').style.display='none'">&times;</span>
+        <h2>Reach Us Out!!</h2>
+        <form method="POST" action="{{ url_for('contact') }}">
+            <div class="form-group">
+                <label for="name">Name: <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email: <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="phone">Contact Number: <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required pattern="\d{10}" title="Phone number must contain exactly 10 digits">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address: <span class="required">*</span></label>
+                    <textarea id="address" name="address" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                <label for="message">Message: <span class="required">*</span></label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+
+            <button id="sub" type="submit">Send Message</button>
+        </form>
+    </div>
+</div>
+
+<!-- Scripts -->
+<!-- <script src="{{ url_for('static', filename='js/scripts.js') }}"></script> -->
+<!-- Include Bootstrap JS and any other necessary JS files -->
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+        // Close the modal when clicking outside of it
+        window.onclick = function(event) {
+            var modal = document.getElementById('contactModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        window.onclick = function(event){
+            var modal = document.getElementById('contactModal');
+            if(event.target == modal){
+                modal.style.display = "none";
+            }
+        }
+    
+        document.getElementById('contactForm').addEventListener('submit', function(event){
+            event.preventDefault();
+            alert('Thank you for contacting us. We will reach you soon !!');
+            document.getElementById('contactModal').style.display = 'none';
+            document.getElementById('contactForm').reset();
+        })
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    
+</body>
+</html>

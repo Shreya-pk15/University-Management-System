@@ -1,0 +1,63 @@
+.about-section {
+    text-align: center;
+    margin-top: 50px; /* Adjust margin top as needed */
+}
+
+.about-section h1 {
+    font-size: 2.5rem; /* Adjust heading font size */
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto; /* Center the content */
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.about-content p {
+    margin-bottom: 20px;
+}
+
+.about-section img {
+    max-width: 60%;
+    height: auto;
+    display: block;
+    margin: 20px auto; /* Center the image */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+}
+.blog-container {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Ensure scrolling snaps to each blog post */
+}
+
+.blog {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 400px;
+    margin-right: 20px;
+    scroll-snap-align: start; /* Snap each blog post to the start of the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-image {
+    width: 50%;
+    height: auto;
+}
+
+.blog-content {
+    padding: 20px;
+}
+
+.blog-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.blog-text {
+    line-height: 1.6;
+}

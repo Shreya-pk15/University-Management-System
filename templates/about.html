@@ -1,0 +1,356 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - University Management System{% endblock %}
+
+{% block content %}
+<div class="about-section">
+    <h1><b>About Us</b></h1>
+    <img src="{{ url_for('static', filename='university.jpg') }}" alt="University Image" class="img-fluid">
+    <div class="about-content">
+        <p>Welcome to the <B>ELITE ACADEMY</B>, where excellence in education and research is our top priority. Established in 1998, our university has a rich history of fostering intellectual growth and providing students with the skills and knowledge they need to succeed in their chosen fields.</p>
+        <p>Our mission is to create a nurturing and inclusive environment that encourages innovation, critical thinking, and lifelong learning. We offer a diverse range of undergraduate, graduate, and professional programs designed to meet the needs of our students and the demands of the global workforce.</p>
+        <p>At <B>ELITE ACADEMY</B>, we are committed to making a positive impact on society through our research initiatives, community engagement, and partnerships with industry leaders. Our faculty members are renowned experts in their fields, dedicated to mentoring and inspiring the next generation of leaders.</p>
+        <p>Join us on our journey to make a difference in the world. Discover more about our programs, campus life, and the many opportunities available to you at <B>ELITE ACADEMY</B>.</p>
+    </div>
+
+    <!-- Blog Post Section -->
+    <div class="blog-container">
+        <div class="blog">
+           <img src="static\blog-image-1.jpeg" alt="Blog Image 1" class="blog-image" width="30%" height="30%">
+           <div class="blog-content">
+               <h2 class="blog-title">Exploring Campus Life at <B>ELITE ACADEMY</B></h2>
+               <p class="blog-text">Discover the vibrant campus life at ELITE ACADEMY, where students thrive in a supportive environment filled with opportunities for academic growth and personal development.</p>
+           </div>
+       </div>
+       
+       <div class="blog">
+           <img src="static\blog-image-2.jpeg" alt="Blog Image 2" class="blog-image">
+           <div class="blog-content">
+               <h2 class="blog-title">Innovative Research Initiatives at <B>ELITE ACADEMY</B></h2>
+               <p class="blog-text">Explore the groundbreaking research projects and initiatives underway at <B>ELITE ACADEMY</B>, pushing the boundaries of knowledge and addressing global challenges.</p>
+           </div>
+       </div>
+       
+       <div class="blog">
+           <img src="static\blog-image-3.jpeg" alt="Blog Image 3" class="blog-image">
+           <div class="blog-content">
+               <h2 class="blog-title">Student Success Stories: Impacting the World</h2>
+               <p class="blog-text">Read inspiring stories of students from <B>ELITE ACADEMY</B> making a difference in their communities and beyond, equipped with the skills and values learned during their academic journey.</p>
+           </div>
+       </div>
+       
+       <div class="blog">
+           <img src="static\blog-image-4.jpeg" alt="Blog Image 4" class="blog-image">
+           <div class="blog-content">
+               <h2 class="blog-title">Faculty Spotlight: Leaders in Education</h2>
+               <p class="blog-text">Meet the dedicated faculty members at <B>ELITE ACADEMY</B> who are passionate about teaching, research, and mentoring the next generation of scholars and professionals.</p>
+           </div>
+       </div>
+       <div class="blog">
+           <img src="static\blog-image-5.jpeg" alt="Blog Image 5" class="blog-image">
+           <div class="blog-content">
+               <h2 class="blog-title">Celebrating Cultural Diversity at <B>ELITE ACADEMY</B></h2>
+               <p class="blog-text">Explore the vibrant cultural events and celebrations that enrich the campus life at <B>ELITE ACADEMY</B>, fostering a sense of unity and global understanding among students and faculty.</p>
+           </div>
+       </div>
+       
+       <div class="blog">
+           <img src="static\blog-image-6.jpeg" alt="Blog Image 6" class="blog-image">
+           <div class="blog-content">
+               <h2 class="blog-title">Advancing Sustainability Initiatives at <B>ELITE ACADEMY</B></h2>
+               <p class="blog-text">Learn about the innovative sustainability projects and initiatives led by students and faculty at <B>ELITE ACADEMY</B>, dedicated to creating a greener and more sustainable campus environment.</p>
+           </div>
+       </div>
+       
+       <div class="blog">
+           <img src="static\blog-image-7.jpeg" alt="Blog Image 7" class="blog-image">
+           <div class="blog-content">
+               <h2 class="blog-title">Alumni Success: Making an Impact in the World</h2>
+               <p class="blog-text">Discover inspiring stories of alumni from <B>ELITE ACADEMY</B> who are making significant contributions in their professions and communities worldwide, showcasing the university's impact on shaping future leaders.</p>
+           </div>
+       </div>
+           <!-- Add more blog items as needed -->
+       </div>
+   </div>
+
+   <br>
+   <!-- Achievements and Awards Section -->
+   <section id="achievements" class="achievements">
+    <h1>Achievements & Awards</h1>
+    <div class="achievements-slideshow">
+        <div class="mySlides">
+            <img src="static/award1.jpg" alt="Award 1">
+            <div class="caption">
+                <h4>Best University Award</h4>
+                <p>Our university was awarded the Best University Award for excellence in education and research.</p>
+            </div>
+        </div>
+        <div class="mySlides">
+            <img src="static\award2.jpg" alt="Award 2">
+            <div class="caption">
+                <h4>Research Excellence</h4>
+                <p>Faculty members received national recognition for groundbreaking research in various fields.</p>
+            </div>
+        </div>
+        <div class="mySlides">
+            <img src="static/award3.jpg" alt="Award 3">
+            <div class="caption">
+                <h4>Student Achievements</h4>
+                <p>Our students have won multiple awards in national and international competitions.</p>
+            </div>
+        </div>
+        <div class="mySlides">
+            <img src="static/award4.png" alt="Award 4">
+            <div class="caption">
+                <h4>Innovation in Teaching</h4>
+                <p>Recognized for implementing innovative teaching methodologies that enhance learning experiences.</p>
+            </div>
+        </div>
+        <div class="mySlides">
+            <img src="static/award5.jpg" alt="Award 5">
+            <div class="caption">
+                <h4>Community Service</h4>
+                <p>Awarded for outstanding contributions to community service and social responsibility projects.</p>
+            </div>
+        </div>
+        <div class="mySlides">
+            <img src="static/award6.jpg" alt="Award 6">
+            <div class="caption">
+                <h4>Environmental Sustainability</h4>
+                <p>Honored for our commitment to environmental sustainability and green campus initiatives.</p>
+            </div>
+        </div>
+        <div class="mySlides">
+            <img src="static/award7.jpg" alt="Award 7">
+            <div class="caption">
+                <h4>Global Collaboration</h4>
+                <p>Recognized for fostering global collaborations and partnerships with international universities.</p>
+            </div>
+        </div>
+        <div class="mySlides">
+            <img src="static/award8.jpg" alt="Award 8">
+            <div class="caption">
+                <h4>Sports Excellence</h4>
+                <p>Awarded for outstanding achievements in intercollegiate sports and athletics.</p>
+            </div>
+        </div>
+        <div class="mySlides">
+            <img src="static/award9.jpg" alt="Award 9">
+            <div class="caption">
+                <h4>Alumni Success</h4>
+                <p>Our alumni have achieved remarkable success in their respective fields, contributing to society.</p>
+            </div>
+        </div>
+        <div class="mySlides">
+            <img src="static/award10.jpg" alt="Award 10">
+            <div class="caption">
+                <h4>Technological Advancements</h4>
+                <p>Recognized for pioneering technological advancements and research innovations.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    document.getElementById('next-blog').addEventListener('click', function() 
+    {
+        const container = document.querySelector('.blog-container');
+        container.scrollLeft += container.offsetWidth;
+    });
+    
+</script>
+
+<script>
+    // Slideshow functionality
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(showSlides, 3000); // Change image every 3 seconds
+}
+
+// Interactive Campus Map
+function initMap() {
+    const mapOptions = {
+        center: { lat: 40.712776, lng: -74.005974 },
+        zoom: 15
+    };
+    const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    const markers = [
+        { position: { lat: 40.712776, lng: -74.005974 }, title: 'Main Building' },
+        { position: { lat: 40.712276, lng: -74.006974 }, title: 'Library' },
+        { position: { lat: 40.711776, lng: -74.004974 }, title: 'Student Center' },
+    ];
+
+    markers.forEach(function(marker) {
+        new google.maps.Marker({
+            position: marker.position,
+            map: map,
+            title: marker.title
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    initMap();
+    showSlides();
+});
+</script>
+
+<!-- Reviews Section -->
+<div class="reviews-section">
+    <h1 class="reviews-heading" style="text-align:center; margin-top:30px; margin-bottom:30px; color:black;text-transform: uppercase;
+    ">What our Students see.. </h1>
+   <div class="review-container" >
+         <div class="review-box inactive" id="review-1" onclick="toggleReview(this)">
+            <img src="{{ url_for('static', filename='review1.jpeg') }}" alt="Reviewer 1" class="review-image">
+            <div class="review-rating">
+                <span class="star full"></span>
+                <span class="star full"></span>
+                <span class="star full"></span>
+                <span class="star empty"></span>
+                <span class="star empty"></span>
+            </div>
+            <div class="review-text">"This university has provided me with countless opportunities to grow academically. The faculty and staff are incredibly supportive."</div>
+        </div>
+        <div class="review-box inactive" id="review-3" onclick="toggleReview(this)">
+            <img src="{{ url_for('static', filename='review3.jpeg') }}" alt="Reviewer 3" class="review-image">
+            <div class="review-rating">
+                <span class="star full"></span>
+                <span class="star full"></span>
+                <span class="star full"></span>
+                <span class="star full"></span>
+                <span class="star full"></span>
+            </div>
+            <div class="review-text">" My child has flourished at Elite Academy. The community is diverse and inclusive, and the opportunities for growth are abundant."</div>
+        </div>
+        <div class="review-box active" id="review-2" onclick="toggleReview(this)">
+            <img src="{{ url_for('static', filename='review2.jpeg') }}" alt="Reviewer 2" class="review-image">
+            <div class="review-rating">
+                <span class="star full"></span>
+                <span class="star full"></span>
+                <span class="star full"></span>
+                <span class="star full"></span>
+                <span class="star half"></span>
+            </div>
+            <div class="review-text">"A great place to study and make lifelong connections. The campus is beautiful and the community is very welcoming."</div>
+        </div>
+        
+        
+        <div class="review-box inactive" id="review-1" onclick="toggleReview(this)" style="margin-top:65px;margin-bottom:60px;">
+            <img src="{{ url_for('static', filename='review4.jpeg') }}" alt="Reviewer 1" class="review-image">
+            <div class="review-rating">
+                <span class="star full"></span>
+                <span class="star full"></span>
+                <span class="star full"></span>
+                <span class="star half"></span>
+                <span class="star empty"></span>
+            </div>
+            <div class="review-text">"As a parent, I am extremely satisfied with the quality of education my child is receiving at Elite Academy. The faculty is very supportive and attentive."</div>
+        </div>
+        
+       <div class="review-box inactive" id="review-1" onclick="toggleReview(this)">
+            <img src="{{ url_for('static', filename='review5.jpeg') }}" alt="Reviewer 5" class="review-image">
+            <div class="review-rating">
+                <span class="star full"></span>
+                <span class="star full"></span>
+                <span class="star full"></span>
+                <span class="star half"></span>
+                <span class="star empty"></span>
+            </div>
+            <div class="review-text">" My child has flourished at Elite Academy. The community is diverse and inclusive, and the opportunities for growth are abundant i am very glad to he completed his education here."</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID;
+    const reviewContainer = document.querySelector('.review-container');
+    const reviewBoxes = Array.from(document.querySelectorAll('.review-box'));
+
+    function toggleReview(reviewElement) {
+        const allReviews = document.querySelectorAll('.review-box');
+        const isActive = reviewElement.classList.contains('active');
+
+        allReviews.forEach(review => {
+            review.classList.remove('active');
+            review.classList.remove('inactive');
+        });
+
+        if (!isActive) {
+            reviewElement.classList.add('active');
+            allReviews.forEach(review => {
+                if (review !== reviewElement) {
+                    review.classList.add('inactive');
+                }
+            });
+        }
+    }
+
+    reviewContainer.addEventListener('mousedown', touchStart);
+    reviewContainer.addEventListener('mouseup', touchEnd);
+    reviewContainer.addEventListener('mouseleave', touchEnd);
+    reviewContainer.addEventListener('mousemove', touchMove);
+
+    reviewContainer.addEventListener('touchstart', touchStart);
+    reviewContainer.addEventListener('touchend', touchEnd);
+    reviewContainer.addEventListener('touchmove', touchMove);
+
+    function touchStart(event) {
+        isDragging = true;
+        startPos = getPositionX(event);
+        animationID = requestAnimationFrame(animation);
+    }
+
+    function touchEnd() {
+        isDragging = false;
+        cancelAnimationFrame(animationID);
+
+        const movedBy = currentTranslate - prevTranslate;
+
+        if (movedBy < -100 && reviewContainer.scrollLeft < reviewContainer.scrollWidth - reviewContainer.clientWidth) {
+            reviewContainer.scrollLeft += reviewContainer.clientWidth;
+        } else if (movedBy > 100 && reviewContainer.scrollLeft > 0) {
+            reviewContainer.scrollLeft -= reviewContainer.clientWidth;
+        }
+
+        currentTranslate = 0;
+    }
+
+    function touchMove(event) {
+        if (isDragging) {
+            const currentPosition = getPositionX(event);
+            currentTranslate = currentPosition - startPos;
+        }
+    }
+
+    function getPositionX(event) {
+        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+    }
+
+    function animation() {
+        setSliderPosition();
+        if (isDragging) requestAnimationFrame(animation);
+    }
+
+    function setSliderPosition() {
+        reviewContainer.style.transform = `translateX(${currentTranslate}px)`;
+    }
+    
+</script>
+
+{% endblock %}

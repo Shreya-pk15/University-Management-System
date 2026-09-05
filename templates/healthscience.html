@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Sciences</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            /* background-color: #333; */
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+            /* padding: 0.5em 0; */
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        main {
+            margin: 2em auto;
+            width: 90%;
+            max-width: 1000px;
+        }
+        h2, h3 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: square;
+        }
+        .faculty-card {
+            display: flex;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 1.5em;
+            padding: 1em;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .faculty-card img {
+            max-width: 120px;
+            margin-right: 1.5em;
+            border-radius: 8px;
+        }
+        .faculty-card h3 {
+            margin: 0 0 0.5em 0;
+        }
+        .curriculum ul, .career ul {
+            margin: 0 0 1.5em 1.5em;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="University Logo" height="30">
+                <B>ELITE ACADEMY</B>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Campus Life
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ url_for('housing_dining') }}">Housing & Dining</a>
+                            <a class="dropdown-item" href="{{ url_for('health_wellness') }}">Health & Wellness</a>
+                            <a class="dropdown-item" href="{{ url_for('campus_safety') }}">Campus Safety</a>
+                            <a class="dropdown-item" href="{{ url_for('athletics') }}">Athletics</a>
+                            <a class="dropdown-item" href="{{ url_for('arts_culture') }}">Arts & Culture</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('faculty') }}">Faculty</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<header>
+    <h1><b>Health Sciences</b></h1>
+</header>
+
+<main>
+    <!-- Description -->
+    <section>
+        <p>The Health Sciences program provides comprehensive education in various aspects of health and medicine, preparing students for careers in healthcare and medical research.</p>
+    </section>
+
+    <!-- Overview -->
+    <section>
+        <h2>Program Overview</h2>
+        <ul>
+            <li>Understand human anatomy and physiology.</li>
+            <li>Gain practical skills through clinical experience.</li>
+            <li>Study health promotion and disease prevention.</li>
+            <li>Prepare for careers in healthcare, research, and public health.</li>
+        </ul>
+    </section>
+
+    <!-- Curriculum -->
+    <section class="curriculum">
+        <h2>Curriculum</h2>
+
+        <h3>Core Branches</h3>
+        <ul>
+            <li>Nursing</li>
+            <li>Pharmacy</li>
+            <li>Public Health</li>
+            <li>Physiotherapy</li>
+            <li>Biomedical Science</li>
+        </ul>
+
+        <h3>Electives</h3>
+        <ul>
+            <li>Environmental Engineering</li>
+            <li>Healthcare Management</li>
+            <li>Medical Informatics</li>
+        </ul>
+    </section>
+
+    <!-- Faculty -->
+    <section class="faculty">
+        <h2>Faculty</h2>
+        <p>Our distinguished faculty includes leaders in their respective fields, such as Dr. Elizabeth Blackwell, Dr. Jonas Salk, and Prof. Florence Nightingale. They bring a wealth of experience and knowledge, offering students a unique and enriching educational experience.</p>
+
+        <!-- Faculty Cards -->
+        <div class="faculty-card">
+            <img src="{{ url_for('static', filename='images/health_sciences/elizabeth_blackwell.jpeg') }}" alt="Dr. Elizabeth Blackwell">
+            <div>
+                <h3>Dr. Elizabeth</h3>
+                <p><strong>Subject:</strong> Medicine</p>
+                <p><strong>Experience:</strong> First woman to receive a medical degree in the United States and pioneer in promoting the education of women in medicine.</p>
+                <p><strong>Phone:</strong> +1-987-654-3210</p>
+            </div>
+        </div>
+
+        <div class="faculty-card">
+            <img src="{{ url_for('static', filename='images/health_sciences/joe.jpeg') }}" alt="Dr. Joe">
+            <div>
+                <h3>Dr. Joe</h3>
+                <p><strong>Subject:</strong> Virology</p>
+                <p><strong>Experience:</strong> Developed the first successful polio vaccine, making significant contributions to virology and immunology.</p>
+                <p><strong>Phone:</strong> +1-876-543-2109</p>
+            </div>
+        </div>
+
+        <div class="faculty-card">
+            <img src="{{ url_for('static', filename='images/health_sciences/florence_nightingale.jpeg') }}" alt="Prof. Florence Nightingale">
+            <div>
+                <h3>Prof. Florence Nightingale</h3>
+                <p><strong>Subject:</strong> Nursing</p>
+                <p><strong>Experience:</strong> Founder of modern nursing, known for her work in improving sanitary conditions and patient care.</p>
+                <p><strong>Phone:</strong> +1-765-432-1098</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Prospects -->
+    <section class="career">
+        <h2>Career Prospects</h2>
+        <ul>
+            <li>Graduates of the Health Sciences program can look forward to a diverse range of rewarding career opportunities. As healthcare professionals, they provide critical medical care and support to patients, ensuring their health and well-being. Medical researchers play a pivotal role in advancing medical science by conducting groundbreaking studies, leading to the development of new treatments and technologies.</li>
+            <li>Public health specialists are essential in promoting community health through the development and implementation of health programs that prevent disease and improve quality of life.</li>
+            <li>Clinical coordinators oversee patient care and clinical operations, ensuring that healthcare services are delivered efficiently and effectively. These careers are highly fulfilling, offering the chance to make a significant impact in hospitals, research institutions, public health organizations, and clinical settings.</li>
+            <li>Health science is one of the most diverse areas of study in the United States right now, with students of all economic and educational backgrounds wanting to learn how to help others.</li>
+        </ul>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Health Sciences Program. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

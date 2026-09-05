@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Academy Campus Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+
+        .info-content {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .leaflet-popup-content-wrapper {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Elite Academy Campus Map</h1>
+        <div id="map"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([40.732710, -73.932242], 16); // Centered on campus
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Define the campus boundary (polygon)
+
+      var campusBoundary = [
+            [40.733710, -73.937222], // Top-left
+            [40.735470, -73.932342], // Top-right
+            [40.733410, -73.925942], // Bottom-right
+            [40.728100, -73.929888]  // Bottom-left
+        ];
+        // Add campus boundary to the map
+        L.polygon(campusBoundary, {
+            color: 'blue',
+            weight: 2,
+            fillOpacity: 0.1
+        }).addTo(map).bindPopup('<b>Elite Academy Campus</b>');
+
+        // Define campus locations
+        var locations = [
+            { lat: 40.733210, lng: -73.931242, title: 'Main Building', content: '<div class="info-content"><h3>Main Building</h3><p>Central hub for academic activities.</p></div>' },
+            { lat: 40.733990, lng: -73.930442, title: 'Admin Block', content: '<div class="info-content"><h3>Admin Block</h3><p>Administrative offices.</p></div>' },
+
+            { lat: 40.733410, lng: -73.936342, title: 'Basketball Ground', content: '<div class="info-content"><h3>Basketball Ground</h3><p>Outdoor basketball court.</p></div>' },
+            { lat: 40.732710, lng: -73.933242, title: 'Cafeteria', content: '<div class="info-content"><h3>Cafeteria</h3><p>Dining facilities with a variety of food options.</p></div>' },
+            { lat: 40.732010, lng: -73.933742, title: 'Food Court', content: '<div class="info-content"><h3>Food Court</h3><p>Multiple dining options under one roof.</p></div>' },
+            { lat: 40.732210, lng: -73.930242, title: 'Cafe', content: '<div class="info-content"><h3>Cafe</h3><p>Relaxing spot for coffee and snacks.</p></div>' },
+            { lat: 40.734710, lng: -73.932242, title: 'Business Block', content: '<div class="info-content"><h3>Business Block</h3><p>Home to business programs and classes.</p></div>' },
+
+            { lat: 40.733442, lng: -73.929042, title: 'Engineering Block', content: '<div class="info-content"><h3>Engineering Block</h3><p>Engineering department and labs.</p></div>' },
+
+            { lat: 40.732542, lng: -73.927502, title: 'Health Science Block', content: '<div class="info-content"><h3>Health Science Block</h3><p>Health sciences programs and classes.</p></div>' },
+            { lat: 40.731292, lng: -73.928502, title: 'Fine Arts Block', content: '<div class="info-content"><h3>Fine Arts Block</h3><p>Studios and classes for fine arts.</p></div>' },
+
+            { lat: 40.734210, lng: -73.934542, title: 'Environmental Studies Block', content: '<div class="info-content"><h3>Environmental Studies Block</h3><p>Environmental studies and research.</p></div>' },
+            { lat: 40.733710, lng: -73.932742, title: 'Research Center', content: '<div class="info-content"><h3>Research Center</h3><p>Facilities for advanced research and development.</p></div>' },
+            { lat: 40.730042, lng: -73.930042, title: 'Seminar Hall 1', content: '<div class="info-content"><h3>Seminar Hall 1</h3><p>Venue for seminars and workshops.</p></div>' },
+            { lat: 40.731042, lng: -73.931042, title: 'Seminar Hall 2', content: '<div class="info-content"><h3>Seminar Hall 2</h3><p>Another venue for seminars and workshops.</p></div>' },
+            { lat: 40.732710, lng: -73.935242, title: 'Multipurpose Hall', content: '<div class="info-content"><h3>Multipurpose Hall</h3><p>Versatile space for various events and activities.</p></div>' }
+        ];
+
+        // Add markers to the map
+        locations.forEach(function(location) {
+            var marker = L.marker([location.lat, location.lng]).addTo(map)
+                .bindPopup(location.content);
+        });
+    </script>
+</body>
+</html>
